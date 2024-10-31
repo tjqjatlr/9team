@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { Link } from 'expo-router';
 import styles from './login.style';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useNavigation();
-
-  const handleSignup = () => {
-    navigation.navigate('Signup');
-  };
 
   return (
     <View style={styles.container}>
@@ -63,9 +58,9 @@ const LoginPage = () => {
 
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>계정이 없으신가요?</Text>
-        <TouchableOpacity onPress={handleSignup}>
+        <Link href="/login/signup">
           <Text style={styles.registerLink}>가입하기</Text>
-        </TouchableOpacity>
+        </Link>
       </View>
     </View>
   );
