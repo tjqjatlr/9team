@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { Link } from 'expo-router';
 import styles from './signup.style';
 
 const SignupPage = () => {
@@ -9,9 +10,9 @@ const SignupPage = () => {
         <Image source={require('../../assets/user.png')} style={styles.icon} />
         <Text style={styles.optionTitle}>알바 회원</Text>
         <Text style={styles.optionSubtitle}>일자리를 찾는 알바생</Text>
-        <TouchableOpacity style={styles.button}>
+        <Link href="/login/signup_info" style={[styles.button, styles.linkText]}>
           <Text style={styles.buttonText}>알바로 시작하기</Text>
-        </TouchableOpacity>
+        </Link>
       </View>
 
       <View style={styles.optionContainer}>

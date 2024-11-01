@@ -41,6 +41,11 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
   },
+  linkText: {
+    color: '#fff',
+    fontSize: 16,
+    textAlign: 'center',
+  },
   buttonText: {
     color: '#333',
     fontWeight: 'bold',
