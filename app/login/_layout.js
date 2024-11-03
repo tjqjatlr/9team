@@ -10,10 +10,15 @@ export default function Layout() {
       <Stack.Screen
         name="signup"
         options={{ title: '회원가입' }}
+        
       />
       <Stack.Screen
         name="signup_info"
         options={{ title: '알바로 가입' }}
+      />
+      <Stack.Screen
+        name="signup_info_b"
+        options={{ title: '사장님으로 가입' }}
       />
       <Stack.Screen
         name="propensity"

@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   },
   ownerButton: {
     backgroundColor: '#8ecafc',
+    textAlign: "center"
   },
 });
 

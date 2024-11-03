@@ -113,7 +113,7 @@ const SignupInfo = () => {
         <TextInput style={styles.input} placeholder="도로명주소" />
 
         <View style={styles.rowLabel}>
-          <Text style={styles.label}>선호업종*</Text>
+          <Text style={styles.label}>운영업종*</Text>
           <TouchableOpacity style={styles.verifyButton} onPress={toggleJobModal}>
             <Text style={styles.buttonText}>찾아보기</Text>
           </TouchableOpacity>
@@ -140,7 +140,7 @@ const SignupInfo = () => {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>근무할 근무지 위치를 설정해주세요</Text>
+            <Text style={styles.modalTitle}>운영하는 근무지 위치를 설정해주세요</Text>
             <TextInput style={styles.input} placeholder="도로명, 지번, 건물명" />
             <TouchableOpacity style={styles.confirmButton} onPress={toggleAddressModal}>
               <Text style={styles.confirmButtonText}>위치 설정 완료</Text>
@@ -158,7 +158,7 @@ const SignupInfo = () => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>선호하는 업종을 선택해주세요</Text>
+              <Text style={styles.modalTitle}>운영하는 업종을 선택해주세요</Text>
               <TouchableOpacity onPress={toggleJobModal}>
                 <Text style={styles.closeButton}>✕</Text>
               </TouchableOpacity>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import { Link } from 'expo-router';
+import { Link,  } from 'expo-router';
 import styles from './login.style';
 
 const LoginPage = () => {
