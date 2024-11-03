@@ -15,6 +15,18 @@ export default function Layout() {
         name="signup_info"
         options={{ title: '알바로 가입' }}
       />
+      <Stack.Screen
+        name="propensity"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="propensity_test"
+        options={{ title: '성향 검사' }} 
+      />
+      <Stack.Screen
+        name="propensity_result"
+        options={{ title: '검사 결과' }} 
+      />
     </Stack>
   );
 }
