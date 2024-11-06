@@ -32,6 +32,16 @@ export default function Layout() {
         name="propensity_result"
         options={{ title: '검사 결과' }} 
       />
+      <Stack.Screen
+        name="boss_mainscreen"
+        options={{ title: '사장 메인화면' }} 
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="chatroomscreen"
+        options={{ title: '사장 채팅방' }} 
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 }
