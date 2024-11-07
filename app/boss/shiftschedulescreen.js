@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
-import Icon from 'react-native-vector-icons/Ionicons';
 import Boss_BottomTab from './boss_bottomtab'; // 하단바 컴포넌트
 import styles from './shiftschedulescreen.style';
 

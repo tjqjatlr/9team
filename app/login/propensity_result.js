@@ -26,7 +26,7 @@ const PropensityResult = () => {
       </View>
       
       <TouchableOpacity style={styles.homeButton}>
-        <Link href="/home" style={styles.homeButtonText}>홈으로 이동</Link>
+        <Link href="parttimer/home_a" style={styles.homeButtonText}>홈으로 이동</Link>
       </TouchableOpacity>
     </View>
   );

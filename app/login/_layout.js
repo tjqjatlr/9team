@@ -32,7 +32,6 @@ export default function Layout() {
         name="propensity_result"
         options={{ title: '검사 결과' }} 
       />
-      
     </Stack>
   );
 }
