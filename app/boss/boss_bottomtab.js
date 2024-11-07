@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text,  TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import styles from './boss_bottomtab.style';
 
 const Boss_BottomTab = () => {
   const navigation = useNavigation();
@@ -11,8 +12,8 @@ const Boss_BottomTab = () => {
     { name: '인재찾기', icon: 'search-outline', route: 'FindTalentScreen' },
     { name: '채팅방', icon: 'chatbubble-ellipses-outline', route: 'chatroomscreen' },
     { name: 'AI추천', icon: 'bulb-outline', route: 'AISuggestScreen' },
-    { name: '근무일정', icon: 'calendar-outline', route: 'ScheduleScreen' },
-    { name: '찜', icon: 'heart-outline', route: 'FavoriteScreen' },
+    { name: '근무일정', icon: 'calendar-outline', route: 'shiftschedulescreen' },
+    { name: '찜', icon: 'heart-outline', route: 'favoritesscreen' },
   ];
 
   return (
@@ -31,22 +32,5 @@ const Boss_BottomTab = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#ffffff',
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
-  },
-  tab: {
-    alignItems: 'center',
-  },
-  tabText: {
-    fontSize: 12,
-    color: '#000',
-  },
-});
 
 export default Boss_BottomTab;
