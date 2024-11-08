@@ -19,7 +19,10 @@ export default function Layout() {
         name="shiftschedulescreen"
         options={{ title: '근무일정', headerShown: false }} 
       />
-    
+      <Stack.Screen
+        name="findparttimerscreen"
+        options={{ title: '인재 찾기', headerShown: false }} 
+      />
     </Stack>
   );
 }

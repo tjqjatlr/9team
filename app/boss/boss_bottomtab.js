@@ -9,7 +9,7 @@ const Boss_BottomTab = () => {
 
   const tabs = [
     { name: '홈', icon: 'home-outline', route: 'boss_mainscreen' },
-    { name: '인재찾기', icon: 'search-outline', route: 'FindTalentScreen' },
+    { name: '인재찾기', icon: 'search-outline', route: 'findparttimerscreen' },
     { name: '채팅방', icon: 'chatbubble-ellipses-outline', route: 'chatroomscreen' },
     { name: 'AI추천', icon: 'bulb-outline', route: 'AISuggestScreen' },
     { name: '근무일정', icon: 'calendar-outline', route: 'shiftschedulescreen' },
