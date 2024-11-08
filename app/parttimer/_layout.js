@@ -1,15 +1,20 @@
 import { Stack } from 'expo-router';
+import CustomHeader from './CustomHeader';
 
 export default function Layout() {
   return (
     <Stack>
       <Stack.Screen
         name="home_a"
-        options={{ title: '사장 메인화면', headerShown: false }} 
+        options={{ title: '알바 홈', headerShown: false }} 
       />
       <Stack.Screen
         name="findparttimer"
-        options={{ title: '사장 메인화면', headerShown: false }} 
+        options={{ 
+          title: '알바찾기', 
+          headerBackVisible: false,
+          headerTitle: () => <CustomHeader title="알바찾기"/>
+        }} 
       />
       <Stack.Screen
         name="chatroomscreen"

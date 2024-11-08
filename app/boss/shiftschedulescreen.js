@@ -32,7 +32,7 @@ const ShiftScheduleScreen = () => {
             source={{ uri: 'https://cdn-icons-png.flaticon.com/128/8602/8602851.png' }} 
             style={styles.calculatorIcon} 
             />
-            <Text style={styles.calculatorText}>급여계산기</Text>
+            <Text style={styles.calculatorText}>급여계산기</Text> {/* 작게 표시되는 텍스트 */}
         </View>
         </TouchableOpacity>
 

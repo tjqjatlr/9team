@@ -1,7 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-const screenWidth = Dimensions.get('window').width;
-
+import { StyleSheet } from 'react-native';
 
 
 const styles = StyleSheet.create({
@@ -84,100 +81,53 @@ const styles = StyleSheet.create({
       color: '#666',
       marginTop: 8,
     },
-    myJobsContainer: {
+    storeSection: {
       padding: 16,
-      backgroundColor: '#E6EBFD',
-    },
-    myJobsTitle: {
+      backgroundColor: '#e8f4ff',  // 배경색을 연한 파란색으로 설정
+  }, 
+    storeName: {
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#333333',
-      marginBottom: 16,
+      marginBottom: 10,
     },
-    pageContainer: {
-      width: screenWidth, // 전체 화면 너비로 설정하여 페이지처럼 보이게 합니다
+    gridContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      justifyContent: 'space-around',
     },
-    jobCardWrapper: {
-      width: screenWidth / 2 - 24, // 2개씩 배치되도록 너비 설정
-      margin: 8,
-    },
-    jobCard: {
-      flexDirection: 'column',
-      height: 165,
-      alignItems: 'center',
-      backgroundColor: '#FFFFFF',
+    applicant: {
+      width: 150,
+      margin: 5,
+      backgroundColor: '#ffffff',
       borderRadius: 8,
-      padding: 12,
-      elevation: 2,
-      shadowColor: '#000',
-      shadowOpacity: 0.1,
-      shadowRadius: 4,
-      shadowOffset: { width: 0, height: 2 },
+      padding: 10,
+      alignItems: 'center',
     },
-    jobImage: {
-      width: 50,
-      height: 50,
-      borderRadius: 25,
+    applicantImage: {
+      width: 60,
+      height: 60,
+      borderRadius: 30,
       marginBottom: 8,
     },
-    jobDetails: {
+    applicantInfo: {
       alignItems: 'center',
     },
-    jobTitle: {
-      fontSize: 16,
+    nameText: {
       fontWeight: 'bold',
-      color: '#333333',
+    },
+    jobText: {
+      color: '#666',
       textAlign: 'center',
     },
-    jobSubtitle: {
-      fontSize: 14,
-      color: '#666666',
-      textAlign: 'center',
-    },
-    jobInfo: {
-      fontSize: 12,
-      color: '#999999',
-    },
-    jobTagContainer: {
-      alignItems: 'center',
-      marginTop: 8,
-    },
-    jobTag: {
-      fontSize: 12,
-      color: '#6EA8DA',
-    },
-    jobType: {
-      fontSize: 12,
-      color: '#999999',
-    },
-    pageContainer: {
-      width: screenWidth, // 화면 너비
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'flex-start',
-  },
-    jobCardWrapper: {
-      width: screenWidth / 2 - 24, 
-      marginVertical: 4,
-      marginHorizontal: 4,
-    },
-    pageIndicator: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      marginVertical: 16,
-    },
-    indicatorDot: {
-      width: 8,
-      height: 8,
+    statusTag: {
+      backgroundColor: '#ffcccc',
+      paddingHorizontal: 8,
+      paddingVertical: 4,
       borderRadius: 4,
-      backgroundColor: '#E0E0E0',
-      marginHorizontal: 4,
+      marginTop: 4,
     },
-    activeDot: {
-      backgroundColor: '#6EA8DA',
+    statusText: {
+      color: '#ff0000',
+      fontWeight: 'bold',
     },
     actionButtons: {
       flexDirection: 'row',
