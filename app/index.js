@@ -2,7 +2,7 @@ import {Redirect} from "expo-router"
 
 const Index = () =>{
     return(
-        <Redirect href="/boss/shiftschedulescreen"/>
+        <Redirect href="/parttimer/home_a"/>
     )
 }
 
