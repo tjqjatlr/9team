@@ -4,8 +4,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Boss_BottomTab from './boss_bottomtab'; // 하단바 컴포넌트
 import styles from './boss_mainscreen.style';
 import * as Progress from 'react-native-progress';
+import { useNavigation } from '@react-navigation/native';
 
 const Boss_MainScreen = () => {
+  const navigation = useNavigation();
   const applicants = [
     
     { id: '1', title: '안성재', subtitle: '[조리] 19:00-23:00 시급 20,000원', info: '', tag: '지원중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
@@ -80,7 +82,7 @@ const Boss_MainScreen = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.recruitmentBanner}>
           <View style={styles.recruitmentItem}>
             <Text style={styles.recruitmentText}>원하는 날짜에만 일할 사람 채용하기</Text>
-            <TouchableOpacity style={styles.recruitButton}>
+            <TouchableOpacity style={styles.recruitButton} onPress={() => navigation.navigate('jobselectionscreen')}>
               <Text style={styles.recruitButtonText}>채용 시작하기</Text>
             </TouchableOpacity>
           </View>

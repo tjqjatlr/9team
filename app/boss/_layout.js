@@ -23,6 +23,30 @@ export default function Layout() {
         name="findparttimerscreen"
         options={{ title: '인재 찾기', headerShown: false }} 
       />
+      <Stack.Screen
+        name="jobselectionscreen"
+        options={{ title: '채용_직무선택', headerShown: false }} 
+      />
+      <Stack.Screen
+        name="jobdetailsscreen"
+        options={{ title: '채용_업무선택 ', headerShown: false }} 
+      />
+      <Stack.Screen
+        name="jobcontentscreen"
+        options={{ title: '채용_제목내용 ', headerShown: false }} 
+      />
+      <Stack.Screen
+        name="joblocationscreen"
+        options={{ title: '채용_근무지', headerShown: false }} 
+      />
+      <Stack.Screen
+        name="jobpostingscreen"
+        options={{ title: '채용_근무날짜', headerShown: false }} 
+      />
+      <Stack.Screen
+        name="jobtimeselectionscreen"
+        options={{ title: '채용_시작시간', headerShown: false }} 
+      />
     </Stack>
   );
 }
