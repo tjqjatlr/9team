@@ -17,16 +17,28 @@ export default function Layout() {
         }} 
       />
       <Stack.Screen
-        name="chatroomscreen"
-        options={{ title: '사장 채팅방', headerShown: false }} 
+        name="chatroom"
+        options={{ 
+          title: '알바 채팅방', 
+          headerBackVisible: false,
+          headerTitle: () => <CustomHeader title="채팅방"/>
+        }}
       />
       <Stack.Screen
-        name="favoritesscreen"
-        options={{ title: '찜 목록', headerShown: false }} 
+        name="favoritelist"
+        options={{ 
+          title: '찜 목록', 
+          headerBackVisible: false,
+          headerTitle: () => <CustomHeader title="찜목록"/>
+        }}
       />
       <Stack.Screen
-        name="shiftschedulescreen"
-        options={{ title: '근무일정', headerShown: false }} 
+        name="scheduler"
+        options={{ 
+          title: '근무 일정', 
+          headerBackVisible: false,
+          headerTitle: () => <CustomHeader title="근무일정"/>
+        }}
       />
     
     </Stack>

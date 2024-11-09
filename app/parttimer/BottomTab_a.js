@@ -10,10 +10,10 @@ const BottomTab_a = () => {
   const tabs = [
     { name: '홈', icon: 'home-outline', route: 'home_a' },
     { name: '알바찾기', icon: 'search-outline', route: 'findparttimer' },
-    { name: '채팅방', icon: 'chatbubble-ellipses-outline', route: 'chatroomscreen' },
+    { name: '채팅방', icon: 'chatbubble-ellipses-outline', route: 'chatroom' },
     { name: 'AI추천', icon: 'bulb-outline', route: 'AISuggestScreen' },
-    { name: '근무일정', icon: 'calendar-outline', route: 'shiftschedulescreen' },
-    { name: '찜', icon: 'heart-outline', route: 'favoritesscreen' },
+    { name: '근무일정', icon: 'calendar-outline', route: 'scheduler' },
+    { name: '찜', icon: 'heart-outline', route: 'favoritelist' },
   ];
 
   return (
