@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
-import CalendarPicker from 'react-native-calendar-picker';
+import { Calendar } from 'react-native-calendars';
 import Boss_BottomTab from './boss_bottomtab'; // 하단바 컴포넌트
 import styles from './shiftschedulescreen.style';
 
@@ -16,9 +16,8 @@ const ShiftScheduleScreen = () => {
 
   const filteredShifts = shifts.filter(shift => shift.date === selectedDate);
 
-  const handleDateChange = (date) => {
-    const formattedDate = date ? date.toISOString().slice(0, 10) : null; // 'YYYY-MM-DD' 형식
-    setSelectedDate(formattedDate);
+  const handleDateSelect = (date) => {
+    setSelectedDate(date.dateString);
   };
 
   return (
@@ -27,28 +26,44 @@ const ShiftScheduleScreen = () => {
       <View style={styles.header}>
         <Text style={styles.headerText}>근무 일정</Text>
         <TouchableOpacity onPress={() => navigation.navigate('급여계산기')}>
-        <View style={styles.calculatorButton}>
+          <View style={styles.calculatorButton}>
             <Image 
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/128/8602/8602851.png' }} 
-            style={styles.calculatorIcon} 
+              source={{ uri: 'https://cdn-icons-png.flaticon.com/128/8602/8602851.png' }} 
+              style={styles.calculatorIcon} 
             />
             <Text style={styles.calculatorText}>급여계산기</Text>
-        </View>
+          </View>
         </TouchableOpacity>
-
       </View>
 
       {/* 화면을 반으로 나누기 */}
       <View style={styles.contentContainer}>
         {/* 캘린더 부분 */}
         <View style={styles.calendarContainer}>
-          <CalendarPicker onDateChange={handleDateChange} />
+          <Calendar 
+            onDayPress={handleDateSelect}
+            markedDates={{
+              [selectedDate]: { selected: true, selectedColor: '#007BFF' }
+            }}
+            monthFormat={'yyyy년 MM월'}
+            enableSwipeMonths={true}
+            theme={{
+              todayTextColor: '#007BFF',
+              arrowColor: '#007BFF',
+              monthTextColor: '#007BFF',
+              textDayFontFamily: 'System',
+              textMonthFontFamily: 'System',
+              textDayHeaderFontFamily: 'System',
+            }}
+            // 한글 설정
+            locale={'ko'}
+          />
         </View>
 
         {/* 알바생 일정 리스트 */}
         <View style={styles.scheduleContainer}>
           {!selectedDate ? (
-            <Text style={styles.noShiftsText}>날짜를 선택해주세요</Text>  // 날짜를 선택하지 않았을 때 표시되는 텍스트
+            <Text style={styles.noShiftsText}>날짜를 선택해주세요</Text>
           ) : (
             <>
               <Text style={styles.selectedDateText}>{selectedDate}의 근무 일정</Text>
