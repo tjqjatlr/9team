@@ -52,6 +52,7 @@ export default function EndTimeSelectionScreen() {
       setEndHour(startHour);
       setEndMinute(startMinute);
       setSelectedEndTime(`${String(startHour).padStart(2, '0')}:${String(startMinute).padStart(2, '0')}`);
+      setNetWorkTime(0); // 초기화 시 실 근무시간도 초기화
     } else {
       // 시간 증가 기능
       let newMinute = endMinute + increment;
@@ -65,7 +66,13 @@ export default function EndTimeSelectionScreen() {
   
       setEndHour(newHour);
       setEndMinute(newMinute);
-      setSelectedEndTime(`${String(newHour).padStart(2, '0')}:${String(newMinute).padStart(2, '0')}`);
+  
+      // 실시간으로 실 근무시간 업데이트
+      const formattedEndTime = `${String(newHour).padStart(2, '0')}:${String(newMinute).padStart(2, '0')}`;
+      setSelectedEndTime(formattedEndTime);
+      
+      // 총 근무시간 및 실 근무시간 다시 계산
+      calculateWorkTimes(newHour, newMinute);
     }
   };
 
