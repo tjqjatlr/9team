@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       textAlign: 'center',
-      marginLeft: -20,
     },
     progressContainer: {
       height: 4,

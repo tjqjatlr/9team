@@ -14,7 +14,7 @@ export default function StartTimeSelectionScreen() {
 
   const goToNextScreen = () => {
     if (1) {
-      navigation.navigate('boss_mainscreen');
+      navigation.navigate('endtimeselectionscreen');
     } else {
       alert('필수 항목을 채워주세요');
     }

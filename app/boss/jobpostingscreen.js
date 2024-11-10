@@ -55,25 +55,25 @@ export default function JobPostingScreen() {
 
         {/* 달력 */}
         <Calendar
-  onDayPress={(day) => {
-    toggleDate(day.dateString);
-  }}
-  markedDates={selectedDates.reduce((acc, date) => {
-    acc[date] = { selected: true, marked: true, selectedColor: '#6B4EFF' }; // Scheduler와 일치하는 색상
-    return acc;
-  }, {})}
-  theme={{
-    todayTextColor: '#6B4EFF',         // 오늘 날짜 텍스트 색상
-    arrowColor: '#6B4EFF',             // 화살표 색상
-    monthTextColor: '#6B4EFF',         // 월 텍스트 색상
-    textDayFontFamily: 'System',       // 날짜 텍스트 폰트
-    textMonthFontFamily: 'System',     // 월 텍스트 폰트
-    textDayHeaderFontFamily: 'System', // 요일 헤더 텍스트 폰트
-  }}
-  monthFormat={'yyyy년 MM월'}           // 연월 형식을 한국어로
-  firstDay={0}                          // 주 시작 요일을 일요일로 설정
-  locale={'ko'}                         // 로케일을 한국어로 설정
-/>
+          onDayPress={(day) => {
+            toggleDate(day.dateString);
+          }}
+          markedDates={selectedDates.reduce((acc, date) => {
+            acc[date] = { selected: true, marked: true, selectedColor: '#6B4EFF' }; // Scheduler와 일치하는 색상
+            return acc;
+          }, {})}
+          theme={{
+            todayTextColor: '#6B4EFF',         // 오늘 날짜 텍스트 색상
+            arrowColor: '#6B4EFF',             // 화살표 색상
+            monthTextColor: '#6B4EFF',         // 월 텍스트 색상
+            textDayFontFamily: 'System',       // 날짜 텍스트 폰트
+            textMonthFontFamily: 'System',     // 월 텍스트 폰트
+            textDayHeaderFontFamily: 'System', // 요일 헤더 텍스트 폰트
+          }}
+          monthFormat={'yyyy년 MM월'}           // 연월 형식을 한국어로
+          firstDay={0}                          // 주 시작 요일을 일요일로 설정
+          locale={'ko'}                         // 로케일을 한국어로 설정
+        />
 
 
         {/* 날짜별 모집 인원 */}

@@ -47,6 +47,14 @@ export default function Layout() {
         name="jobtimeselectionscreen"
         options={{ title: '채용_시작시간', headerShown: false }} 
       />
+       <Stack.Screen
+        name="endtimeselectionscreen"
+        options={{ title: '채용_종료시간', headerShown: false }} 
+      />
+        <Stack.Screen
+        name="wageselectionscreen"
+        options={{ title: '채용_급여설정', headerShown: false }} 
+      />
     </Stack>
   );
 }
