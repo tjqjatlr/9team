@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     position: 'relative',
+    alignItems: 'center',  // 수직 중앙 정렬
     marginRight: 16,
   },
   profileImage: {
@@ -121,6 +122,31 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     fontSize: 12,
   },
+  bookmarkButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 4,  // 위아래 여백 줄이기
+    paddingHorizontal: 8,  // 좌우 여백 줄이기
+    borderRadius: 16,
+    backgroundColor: '#FFECEC',
+    marginLeft: -1,  // 이미지와 버튼 사이 간격 조정
+    justifyContent: 'center',
+    top:5,
+  },
+  bookmarkButtonSelected: {
+    backgroundColor: '#FF6B6B',
+  },
+  bookmarkText: {
+    marginLeft: 4,
+    color: '#FF6B6B',
+    fontWeight: 'bold',
+    fontSize: 12,
+  },
+  bookmarkTextSelected: {
+    color: '#FFFFFF',
+  },
+  
+  
 });
 
 export default styles;

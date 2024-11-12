@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './findparttimerscreen.style';
 import Boss_BottomTab from './boss_bottomtab';
+import { FontAwesome } from '@expo/vector-icons';
 
 const FindPartTimerScreen = () => {
   const applicants = [
@@ -11,12 +12,39 @@ const FindPartTimerScreen = () => {
     { id: '3', name: '백종원', age: 58, personality: 'ENTJ', status: '1시간 전', message: '알바 경험 많습니다! 연락 주세요!', type: '찜', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
   ];
 
+  const [bookmarked, setBookmarked] = useState({});
+
+  const toggleBookmark = (id) => {
+    setBookmarked((prev) => ({
+      ...prev,
+      [id]: !prev[id], // 해당 ID의 북마크 상태를 토글
+    }));
+  };
+
   const renderApplicant = ({ item }) => (
     <View style={styles.applicantCard}>
       <View style={styles.profileContainer}>
         <Image source={{ uri: item.image }} style={styles.profileImage} />
-        <TouchableOpacity style={styles.favoriteButton}>
-          <Icon name="heart-outline" size={20} color="#666" />
+        <TouchableOpacity
+          style={[
+            styles.bookmarkButton,
+            bookmarked[item.id] && styles.bookmarkButtonSelected,
+          ]}
+          onPress={() => toggleBookmark(item.id)}
+        >
+          <FontAwesome
+            name="heart"
+            size={20}
+            color={bookmarked[item.id] ? '#FFFFFF' : '#FF6B6B'}
+          />
+          <Text
+            style={[
+              styles.bookmarkText,
+              bookmarked[item.id] && styles.bookmarkTextSelected,
+            ]}
+          >
+            찜
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.detailsContainer}>
