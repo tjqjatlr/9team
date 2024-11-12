@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
 import { FontAwesome } from '@expo/vector-icons';
 import BottomTab_a from './BottomTab_a';
 import styles from './findparttimer.style';
@@ -41,6 +42,26 @@ const FindPartTimer = () => {
     const [listings, setListings] = useState(jobListings);
     const [selectedTab, setSelectedTab] = useState('단기알바');
     const [selectedDate, setSelectedDate] = useState(null);
+    const [dates, setDates] = useState([]);
+    const navigation = useNavigation(); // 네비게이션 객체
+
+    useEffect(() => {
+        const today = new Date();
+        const newDates = [];
+        const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+
+        for (let i = 0; i < 6; i++) {
+            const currentDate = new Date();
+            currentDate.setDate(today.getDate() + i);
+
+            const day = i === 0 ? '오늘' : dayNames[currentDate.getDay()];
+            const date = `${currentDate.getDate()}일`;
+
+            newDates.push({ day, date });
+        }
+
+        setDates(newDates);
+    }, []);
 
     const toggleDateSelection = (date) => {
         setSelectedDate(selectedDate === date ? null : date);
@@ -55,49 +76,44 @@ const FindPartTimer = () => {
     };
 
     const renderJobItem = ({ item }) => (
-        <View style={styles.jobItem}>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('jobdetail')} 
+            style={styles.jobItem}
+        >
             <Image source={item.image} style={styles.jobImage} />
             <View style={styles.jobDetails}>
                 <Text style={styles.jobTitle}>{item.title}</Text>
                 <Text style={styles.jobLocation}>{item.location}</Text>
                 <TouchableOpacity
-    style={[
-        styles.bookmarkContainer,
-        item.isBookmarked && styles.bookmarkContainerSelected,
-    ]}
-    onPress={() => toggleBookmark(item.id)}
->
-    <FontAwesome
-        name="heart"
-        size={14}
-        color={item.isBookmarked ? '#FFFFFF' : '#A9A9A9'} 
-    />
-    <Text
-        style={[
-            styles.bookmarkText,
-            item.isBookmarked && styles.bookmarkTextSelected,
-        ]}
-    >
-        찜
-    </Text>
-</TouchableOpacity>
+                    style={[
+                        styles.bookmarkContainer,
+                        item.isBookmarked && styles.bookmarkContainerSelected,
+                    ]}
+                    onPress={() => toggleBookmark(item.id)}
+                >
+                    <FontAwesome
+                        name="heart"
+                        size={14}
+                        color={item.isBookmarked ? '#FFFFFF' : '#FF6B6B'}
+                    />
+                    <Text
+                        style={[
+                            styles.bookmarkText,
+                            item.isBookmarked && styles.bookmarkTextSelected,
+                        ]}
+                    >
+                        찜
+                    </Text>
+                </TouchableOpacity>
                 <View style={styles.jobTimeWage}>
                     <Text style={styles.jobTimeWage}>{`${item.time} / ${item.wage}`}</Text>
                 </View>
                 <Text style={styles.jobTag}>{item.tag}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 
     const tabs = ['단기알바', '급구알바', '중기알바'];
-    const dates = [
-        { day: '오늘', date: '12일' },
-        { day: '화', date: '13일' },
-        { day: '수', date: '14일' },
-        { day: '목', date: '15일' },
-        { day: '금', date: '16일' },
-        { day: '토', date: '17일' },
-    ];
 
     return (
         <View style={styles.container}>

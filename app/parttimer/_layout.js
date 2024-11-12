@@ -17,6 +17,12 @@ export default function Layout() {
         }} 
       />
       <Stack.Screen
+        name="jobdetail"
+        options={{ 
+          title: '공고 상세페이지', 
+        }} 
+      />
+      <Stack.Screen
         name="chatroom"
         options={{ 
           title: '알바 채팅방', 

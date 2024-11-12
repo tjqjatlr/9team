@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const CustomHeader = ({ title }) => (
   <View style={styles.headerContainer}>
     <Text style={styles.headerText}>{title}</Text>
     <View style={{ flex: 0.97 }} /> 
     <TouchableOpacity>
-      <Icon name="search" size={20} color="black" />
+      <Image 
+        source={require('../../assets/search.png')}
+        style={styles.icon} 
+      />
     </TouchableOpacity>
   </View>
 );
@@ -22,6 +24,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#8eaec7', 
+  },
+  icon: {
+    width: 20, 
+    height: 20, 
   },
 });
 
