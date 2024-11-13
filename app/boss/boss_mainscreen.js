@@ -127,19 +127,19 @@ const Boss_MainScreen = () => {
 
         {/* 하단 버튼들 */}
         <View style={styles.actionButtons}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('jobpostionsscreen')}>
             <Icon name="folder-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>나의 공고문</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('a')}>
             <Icon name="cash-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>요금제</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('a')}>
             <Icon name="wallet-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>급여지급</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('a')}>
             <Icon name="megaphone-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>공지사항</Text>
           </TouchableOpacity>

@@ -55,6 +55,14 @@ export default function Layout() {
         name="wageselectionscreen"
         options={{ title: '채용_급여설정', headerShown: false }} 
       />
+        <Stack.Screen
+        name="paymentselectionscreen"
+        options={{ title: '채용_구인글등록', headerShown: false }} 
+      />
+      <Stack.Screen
+        name="jobpostionsscreen"
+        options={{ title: '나의공고문'}} 
+      />
     </Stack>
   );
 }

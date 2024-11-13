@@ -15,8 +15,8 @@ export default function WageSelectionScreen() {
   };
 
   const goToNextScreen = () => {
-    if (wage) {
-      navigation.navigate('boss_mainscreen');
+    if (1) {
+      navigation.navigate('paymentselectionscreen');
     } else {
       alert('필수 항목을 채워주세요');
     }
