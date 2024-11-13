@@ -46,6 +46,12 @@ export default function Layout() {
           headerTitle: () => <CustomHeader title="근무일정"/>
         }}
       />
+      <Stack.Screen
+        name="mypage"
+        options={{ 
+          title: '마이페이지', 
+        }}
+      />
     
     </Stack>
   );

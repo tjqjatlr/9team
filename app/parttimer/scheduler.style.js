@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#888',
     marginBottom: 20,
-    alignSelf: 'flex-start', // 좌상단 정렬
+    alignSelf: 'flex-start', 
   },
   recordContainer: {
     paddingTop: 8,

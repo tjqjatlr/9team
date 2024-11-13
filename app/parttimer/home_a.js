@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, FlatList, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
 import * as Progress from 'react-native-progress';
 import BottomTab_a from './BottomTab_a';
 import styles from './home_a.style';
@@ -91,7 +92,7 @@ const adData = [
   {
     id: 'ad1',
     title: '주말 야간 알바 구인',
-    image: require('../../assets/gs25.jpg'), // 광고 이미지 파일 경로 추가
+    image: require('../../assets/gs25.jpg'), 
     daysLeft: 5,
   },
   {
@@ -130,13 +131,18 @@ const adData = [
     image: require('../../assets/cu.jpg'),
     daysLeft: 3,
   },
-  // 추가 광고 데이터 삽입 가능
 ];
 
 const screenWidth = Dimensions.get('window').width;
 
 const HomeA = () => {
-  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const navigation = useNavigation();
+
+  const handleMyPagePress = () => {
+    navigation.navigate('mypage');
+  };
 
   const renderJobCard = ({ item }) => (
     <View style={styles.jobCard}>
@@ -182,7 +188,7 @@ const HomeA = () => {
             <TouchableOpacity>
               <Image source={require('../../assets/notification.png')} style={styles.icon} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleMyPagePress}>
               <Image source={require('../../assets/mypage.png')} style={styles.icon} />
             </TouchableOpacity>
           </View>

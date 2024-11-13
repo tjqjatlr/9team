@@ -43,7 +43,7 @@ const FindPartTimer = () => {
     const [selectedTab, setSelectedTab] = useState('단기알바');
     const [selectedDate, setSelectedDate] = useState(null);
     const [dates, setDates] = useState([]);
-    const navigation = useNavigation(); // 네비게이션 객체
+    const navigation = useNavigation(); 
 
     useEffect(() => {
         const today = new Date();

@@ -34,13 +34,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 4,
-    textAlign: 'left', // 좌측 정렬
+    textAlign: 'left', 
   },
   userText: {
     fontSize: 14,
     color: '#333',
     marginBottom: 8,
-    textAlign: 'left', // 좌측 정렬
+    textAlign: 'left', 
   },
   profileRow: {
     flexDirection: 'row',
@@ -89,13 +89,13 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   pageContainer: {
-    width: screenWidth, // 전체 화면 너비로 설정하여 페이지처럼 보이게 합니다
+    width: screenWidth, 
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
   jobCardWrapper: {
-    width: screenWidth / 2 - 24, // 2개씩 배치되도록 너비 설정
+    width: screenWidth / 2 - 24, 
     margin: 8,
   },
   jobCard: {
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     color: '#999999',
   },
   pageContainer: {
-    width: screenWidth, // 화면 너비
+    width: screenWidth, 
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
