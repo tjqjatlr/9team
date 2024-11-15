@@ -11,3 +11,9 @@ npx create-expo-app -e with-router
 ## 📝 Notes
 
 - [Expo Router: Docs](https://docs.expo.dev/router/introduction/)
+
+# Server install & start
+**powershell**
+- npm install -g nodemon
+- nodemon server.js
+
