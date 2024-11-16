@@ -20,6 +20,7 @@ export default function Layout() {
         name="jobdetail"
         options={{ 
           title: '공고 상세페이지', 
+          headerTitleAlign: 'center',
         }} 
       />
       <Stack.Screen
@@ -41,7 +42,7 @@ export default function Layout() {
       <Stack.Screen
         name="scheduler"
         options={{ 
-          title: '근무 일정', 
+          title: '근무 일정',
           headerBackVisible: false,
           headerTitle: () => <CustomHeader title="근무일정"/>
         }}
@@ -50,6 +51,14 @@ export default function Layout() {
         name="mypage"
         options={{ 
           title: '마이페이지', 
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="report"
+        options={{ 
+          title: '구인글 신고하기',
+          headerTitleAlign: 'center',
         }}
       />
     </Stack>

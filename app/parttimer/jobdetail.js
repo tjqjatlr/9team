@@ -1,13 +1,40 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Image, Linking, ScrollView } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import MapViewComponent from './MapView';
+import * as Clipboard from 'expo-clipboard';
 import styles from './jobdetail.style';
 
 const JobDetail = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
+  const router = useRouter()
+
+  const handleReportPress = () => {
+    router.push('parttimer/report');
+  };
+
     const toggleBookmark = () => {
         setIsBookmarked((prev) => !prev);
+    };
+
+    const copyToClipboard = async () => {
+      try {
+        await Clipboard.setStringAsync('충남 천안시 동남구 만남로 43 B관 4층');
+        Alert.alert('알림', '주소가 복사되었습니다.');
+      } catch (error) {
+        Alert.alert('오류', '주소 복사 중 문제가 발생했습니다.');
+      }
+    };
+
+    const openGoogleMaps = () => {
+      const address = encodeURIComponent('충남 천안시 동남구 만남로 43');
+      const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${address}`;
+  
+      Linking.openURL(googleMapsUrl).catch((err) =>
+        alert('길찾기 기능을 실행할 수 없습니다.')
+      );
     };
 
   return (
@@ -16,7 +43,7 @@ const JobDetail = () => {
         {/* 상단 제목 */}
         <View style={styles.titleSection}>
           <Text style={styles.title}>[노티드 충남 아산점] 조리</Text>
-          <TouchableOpacity style={styles.reportButton}>
+          <TouchableOpacity style={styles.reportButton} onPress={handleReportPress}>
           <MaterialCommunityIcons name="alarm-light" size={24} color="#FF6B6B" />
           </TouchableOpacity>
         </View>
@@ -50,13 +77,13 @@ const JobDetail = () => {
           </View>
           <View style={styles.sectionContentContainer}>
             <View style={styles.verticalLine} />
-            <Image source={require('../../assets/map.png')} style={styles.mapImage} />
+            <MapViewComponent latitude={36.7988} longitude={127.1145} />
             <Text style={styles.address}>충남 천안시 동남구 만남로 43 B관 4층</Text>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.smallCopyButton}>
+              <TouchableOpacity style={styles.smallCopyButton} onPress={copyToClipboard}>
                 <Text style={styles.copyButtonText}>주소 복사하기</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.smallDirectionButton}>
+              <TouchableOpacity style={styles.smallDirectionButton} onPress={openGoogleMaps}>
                 <Text style={styles.directionButtonText}>길찾기</Text>
               </TouchableOpacity>
             </View>
