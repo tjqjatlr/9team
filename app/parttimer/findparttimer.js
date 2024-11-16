@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; 
+import { useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import BottomTab_a from './BottomTab_a';
 import styles from './findparttimer.style';
@@ -43,7 +43,7 @@ const FindPartTimer = () => {
     const [selectedTab, setSelectedTab] = useState('단기알바');
     const [selectedDate, setSelectedDate] = useState(null);
     const [dates, setDates] = useState([]);
-    const navigation = useNavigation(); 
+    const router = useRouter(); 
 
     useEffect(() => {
         const today = new Date();
@@ -77,7 +77,7 @@ const FindPartTimer = () => {
 
     const renderJobItem = ({ item }) => (
         <TouchableOpacity
-            onPress={() => navigation.navigate('jobdetail')} 
+            onPress={() => router.push('parttimer/jobdetail')} 
             style={styles.jobItem}
         >
             <Image source={item.image} style={styles.jobImage} />

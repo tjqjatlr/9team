@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, FlatList, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; 
+import { useRouter } from 'expo-router';
 import * as Progress from 'react-native-progress';
 import BottomTab_a from './BottomTab_a';
 import styles from './home_a.style';
@@ -138,10 +138,10 @@ const screenWidth = Dimensions.get('window').width;
 const HomeA = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const handleMyPagePress = () => {
-    navigation.navigate('mypage');
+    router.push('parttimer/mypage');
   };
 
   const renderJobCard = ({ item }) => (

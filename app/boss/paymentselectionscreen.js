@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import styles from './paymentselectionscreen.style';
 
 export default function PaymentSelectionScreen() {
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const handlePaymentSelection = (type) => {
     setSelectedPayment(type);
@@ -27,14 +27,14 @@ export default function PaymentSelectionScreen() {
   const registerJobPost = () => {
     alert(`${selectedPayment} 방식으로 구인글이 등록되었습니다.`);
     setModalVisible(false);
-    navigation.navigate('jobpostionsscreen');
+    router.push('boss/jobpostionsscreen');
   };
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      {/* Header ㄵㅇㅅㅈ*/}
       <View style={styles.header}>
-        <TouchableOpacity style={{ zIndex: 999 }} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={{ zIndex: 999 }} onPress={() => router.push()}>
           <Text style={styles.backText}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>구인글 등록</Text>

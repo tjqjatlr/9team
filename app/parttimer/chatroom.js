@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import BottomTab_a from './BottomTab_a';
 import styles from './chatroom.style';
 
 const ChatRoom = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const handleFindJobPress = () => {
-    navigation.navigate('findparttimer');
+    router.push('parttimer/findparttimer');
   };
 
   return (

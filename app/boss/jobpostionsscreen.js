@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import { Checkbox, Menu } from 'react-native-paper';
 import styles from './jobpostionsscreen.style';
 
 export default function JobPostingsScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [showClosedJobs, setShowClosedJobs] = useState(false);
   const [checked, setChecked] = useState(false);
   const [storeMenuVisible, setStoreMenuVisible] = useState(false);
@@ -22,7 +22,7 @@ export default function JobPostingsScreen() {
   const filteredJobPosts = jobPosts.filter(post => post.closed === showClosedJobs);
 
   const goToRegisterJobScreen = () => {
-    navigation.navigate('jobselectionscreen');
+    router.push('boss/jobselectionscreen');
   };
 
   const renderJobPost = ({ item }) => (

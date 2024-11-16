@@ -52,7 +52,6 @@ export default function Layout() {
           title: '마이페이지', 
         }}
       />
-    
     </Stack>
   );
 }

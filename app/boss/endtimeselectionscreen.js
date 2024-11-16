@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import styles from './endtimeselectionscreen.style';
-import { useNavigation } from '@react-navigation/native';
-
+import { useRouter } from 'expo-router';
 export default function EndTimeSelectionScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedEndTime, setSelectedEndTime] = useState("종료시간 선택");
   const [selectedBreakType, setSelectedBreakType] = useState("무급");
   const [selectedBreakTime, setSelectedBreakTime] = useState(30); // 휴게시간 기본값 30분
   const goToNextScreen = () => {
     if (1) {
-      navigation.navigate('wageselectionscreen');
+      router.push('boss/wageselectionscreen');
     } else {
       alert('필수 항목을 채워주세요');
     }
@@ -78,9 +77,9 @@ export default function EndTimeSelectionScreen() {
 
   return (
     <View style={styles.container}>
-    {/* Header */}
+    {/* Header router.push 경로 나중에 수정할 것 */}
     <View style={styles.header}>
-        <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => navigation.goBack()}> 
+        <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push()}> 
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
       <Text style={styles.headerTitle}>구인글 등록</Text>

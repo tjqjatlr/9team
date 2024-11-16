@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import { Checkbox } from 'react-native-paper'; // react-native-paper에서 Checkbox 임포트
 import styles from './wageselectionscreen.style';
 
@@ -8,7 +8,7 @@ export default function WageSelectionScreen() {
   const [isHourly, setIsHourly] = useState(true); // true for 시급, false for 일급
   const [wage, setWage] = useState('');
   const [isChecked, setIsChecked] = useState(false);
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const handleWageTypeToggle = (type) => {
     setIsHourly(type === '시급');
@@ -16,7 +16,7 @@ export default function WageSelectionScreen() {
 
   const goToNextScreen = () => {
     if (1) {
-      navigation.navigate('paymentselectionscreen');
+      router.push('boss/paymentselectionscreen');
     } else {
       alert('필수 항목을 채워주세요');
     }
@@ -24,9 +24,9 @@ export default function WageSelectionScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      {/* Header ㄵㅇㅅㅈ*/}
       <View style={styles.header}>
-        <TouchableOpacity style={{ zIndex: 999 }} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={{ zIndex: 999 }} onPress={() => router.push()}>
           <Text style={styles.backText}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>구인글 등록</Text>

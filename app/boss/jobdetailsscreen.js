@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './jobdetailsscreen.style'
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 export default function JobDetailsScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const selectedJob = "매장관리"; // 예시로 매장관리를 선택했다고 가정
   
   const goToNextScreen = () => {
     
     if (selectedJob) {
-      navigation.navigate('jobcontentscreen');
+      router.push('boss/jobcontentscreen');
     } else {
       alert('필수 항목을 채워주세요');
     }
@@ -18,9 +18,9 @@ export default function JobDetailsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* 헤더 */}
+      {/* 헤더 경로 나중에 수정 */}
       <View style={styles.header}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => navigation.goBack()}>
+      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push()}>
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
         <Text style={styles.headerTitle}>근무정보 추가</Text>

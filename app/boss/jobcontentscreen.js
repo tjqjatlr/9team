@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './jobcontentscreen.style';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 export default function JobContentScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   // 다음 페이지로 이동
   const goToNextScreen = () => {
     if (1) {
-      navigation.navigate('joblocationscreen');
+      router.push('boss/joblocationscreen');
     } else {
       alert('필수 항목을 채워주세요');
     }
@@ -19,9 +19,9 @@ export default function JobContentScreen() {
 
   return (
     <View style={styles.container}>
-      {/* 헤더 */}
+      {/* 헤더 라우터 경로 나중에 수정할 것*/}
       <View style={styles.header}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => navigation.goBack()}>
+      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push()}>
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
         <Text style={styles.headerTitle}>근무정보 추가</Text>

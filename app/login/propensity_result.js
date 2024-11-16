@@ -1,12 +1,17 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 import styles from './propensity_result.style';
 
 const PropensityResult = () => {
+  const router = useRouter();
   const personalityType = 'ENTP';
   const description = '창의적이고 즉흥적으로 대처하는 성향이에요!';
   const recommendedJobs = ['이벤트 스텝', '행사 진행', '홍보', '모델'];
+
+  const handleGoHome = () => {
+    router.push('parttimer/home_a');
+  };
 
   return (
     <View style={styles.container}>
@@ -25,8 +30,8 @@ const PropensityResult = () => {
         ))}
       </View>
       
-      <TouchableOpacity style={styles.homeButton}>
-        <Link href="parttimer/home_a" style={styles.homeButtonText}>홈으로 이동</Link>
+      <TouchableOpacity style={styles.homeButton} onPress={handleGoHome}>
+        <Text style={styles.homeButtonText}>홈으로 이동</Text>
       </TouchableOpacity>
     </View>
   );

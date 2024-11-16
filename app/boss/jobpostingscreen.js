@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity,ScrollView } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import styles from './jobpostingscreen.style';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 export default function JobPostingScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [selectedDates, setSelectedDates] = useState([]);
   const [recruitmentCount, setRecruitmentCount] = useState(1);
 
@@ -28,16 +28,16 @@ export default function JobPostingScreen() {
 
   const goToNextScreen = () => {
     if (1) {
-      navigation.navigate('jobtimeselectionscreen');
+      router.push('boss/jobtimeselectionscreen');
     } else {
       alert('날짜를 선택해주세요');
     }
   };
   return (
     <View style={styles.container}>
-    {/* Header */}
+    {/* Header 나중에 수정*/}
     <View style={styles.header}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => navigation.goBack()}>
+      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push()}>
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
       <Text style={styles.headerTitle}>구인글 등록</Text>

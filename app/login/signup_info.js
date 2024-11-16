@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Modal, FlatList, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import { useRouter } from 'expo-router'; 
 import styles from './signup_info.style';
 
-const jobOptions = [
-  '주방', '서빙', '매장관리', '사무보조', '단순노무', '방송/행사스텝',
-  '운송/배달', '생산/제조', '건설', '물류'
-];
-
 const SignupInfo = () => {
+  const jobOptions = [
+    '주방', '서빙', '매장관리', '사무보조', '단순노무', '방송/행사스텝',
+    '운송/배달', '생산/제조', '건설', '물류'
+  ];
   const [gender, setGender] = useState('');
   const [isAddressModalVisible, setIsAddressModalVisible] = useState(false);
   const [isJobModalVisible, setIsJobModalVisible] = useState(false);
   const [selectedJobs, setSelectedJobs] = useState([]);
-  const navigation = useNavigation(); // Initialize the navigation object
+  const router = useRouter();
 
   const toggleAddressModal = () => {
     setIsAddressModalVisible(!isAddressModalVisible);
@@ -46,7 +45,7 @@ const SignupInfo = () => {
       [
         {
           text: "확인",
-          onPress: () => navigation.navigate('propensity') // Navigate after confirmation
+          onPress: () => router.push('login/propensity')
         }
       ]
     );

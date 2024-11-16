@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity,  ScrollView, TextInput } from 'react-native';
 import styles from './joblocationscreen.style';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 export default function JobLocationScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [location, setLocation] = useState('충남 아산시 탕정면 갈산리 100');
   const [photos, setPhotos] = useState([]); // 사진 업로드 기능을 위해 상태 초기화
   const [facilities, setFacilities] = useState({
@@ -23,7 +23,7 @@ export default function JobLocationScreen() {
  
   const goToNextScreen = () => {
     if (1) {
-      navigation.navigate('jobpostingscreen');
+      router.push('boss/jobpostingscreen');
     } else {
       alert('필수 항목을 채워주세요');
     }
@@ -31,9 +31,9 @@ export default function JobLocationScreen() {
 
   return (
     <View style={styles.container}>
-      {/* 헤더 */}
+      {/* 헤더 나중에 수정할 것*/}
       <View style={styles.header}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => navigation.goBack()}>
+      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push()}>
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
         <Text style={styles.headerTitle}>근무정보 추가</Text>

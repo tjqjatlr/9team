@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image, Dimensions, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Boss_BottomTab from './boss_bottomtab'; // 하단바 컴포넌트
+import Boss_BottomTab from './boss_bottomtab'; 
 import styles from './boss_mainscreen.style';
-import * as Progress from 'react-native-progress';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 const Boss_MainScreen = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const applicants = [
     
     { id: '1', title: '안성재', subtitle: '[조리] 19:00-23:00 시급 20,000원', info: '', tag: '지원중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
@@ -21,8 +20,8 @@ const Boss_MainScreen = () => {
   { id: '9', title: '이상훈', subtitle: '[청소] 07:00-11:00 시급 14,000원', info: '', tag: '확정', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
   { id: '10', title: '박서연', subtitle: '[서빙] 15:00-19:00 시급 18,200원', info: '', tag: '대기중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
 ];
-  const screenWidth = Dimensions.get('window').width; // 화면 너비를 컴포넌트 내에서 정의
-  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
+  const screenWidth = Dimensions.get('window').width; 
+  const [currentPage, setCurrentPage] = useState(0); 
 
   const renderJobCard = ({ item }) => (
     <View style={styles.jobCard}>
@@ -67,7 +66,7 @@ const Boss_MainScreen = () => {
         {/* 상단 로고와 마이페이지 아이콘 */}
         <View style={styles.header}>
           <Text style={styles.logo}>BaroJob</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('MyPaaage')}>
+          <TouchableOpacity onPress={() => router.push('boss/MyPaaage')}>
             <Icon name="person-outline" size={24} color="#000" />
           </TouchableOpacity>
         </View>
@@ -82,7 +81,7 @@ const Boss_MainScreen = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.recruitmentBanner}>
           <View style={styles.recruitmentItem}>
             <Text style={styles.recruitmentText}>원하는 날짜에만 일할 사람 채용하기</Text>
-            <TouchableOpacity style={styles.recruitButton} onPress={() => navigation.navigate('jobselectionscreen')}>
+            <TouchableOpacity style={styles.recruitButton} onPress={() => router.push('boss/jobselectionscreen')}>
               <Text style={styles.recruitButtonText}>채용 시작하기</Text>
             </TouchableOpacity>
           </View>
@@ -127,19 +126,19 @@ const Boss_MainScreen = () => {
 
         {/* 하단 버튼들 */}
         <View style={styles.actionButtons}>
-          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('jobpostionsscreen')}>
+          <TouchableOpacity  style={styles.button} onPress={() => router.push('boss/jobpostionsscreen')}>
             <Icon name="folder-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>나의 공고문</Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('a')}>
+          <TouchableOpacity  style={styles.button} onPress={() => router.push('boss/a')}>
             <Icon name="cash-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>요금제</Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('a')}>
+          <TouchableOpacity  style={styles.button} onPress={() => router.push('boss/a')}>
             <Icon name="wallet-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>급여지급</Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate('a')}>
+          <TouchableOpacity  style={styles.button} onPress={() => router.navigate('boss/a')}>
             <Icon name="megaphone-outline" size={24} color="#3498db" />
             <Text style={styles.buttonText}>공지사항</Text>
           </TouchableOpacity>

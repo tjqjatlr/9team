@@ -106,10 +106,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     elevation: 2,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
   },
   jobImage: {
     width: 50,

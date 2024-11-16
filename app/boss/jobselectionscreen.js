@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity,Image } from 'react-native';
 import styles from './jobselectionscreen.style';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 export default function JobSelectionScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [selectedJob, setSelectedJob] = useState(null);
 
   // 직무 목록 데이터 (이미지 경로 추가)
@@ -29,7 +29,7 @@ export default function JobSelectionScreen() {
   // 다음 화면으로 이동
   const goToNextScreen = () => {
     if (selectedJob) {
-      navigation.navigate('jobdetailsscreen');
+      router.push('boss/jobdetailsscreen');
     } else {
       alert('직무를 선택해주세요.');
     }
