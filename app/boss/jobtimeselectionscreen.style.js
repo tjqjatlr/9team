@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     picker: {
       flex: 1,
       height: 100,
+      
     },
     confirmButton: {
       marginTop: 150, // Picker와 확인 버튼 사이 여백 최소화

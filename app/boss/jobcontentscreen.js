@@ -21,7 +21,7 @@ export default function JobContentScreen() {
     <View style={styles.container}>
       {/* 헤더 라우터 경로 나중에 수정할 것*/}
       <View style={styles.header}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push()}>
+      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/jobdetailsscreen')}>
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
         <Text style={styles.headerTitle}>근무정보 추가</Text>

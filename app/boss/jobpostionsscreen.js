@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, Modal, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Checkbox, Menu } from 'react-native-paper';
 import styles from './jobpostionsscreen.style';
@@ -10,7 +10,19 @@ export default function JobPostingsScreen() {
   const [checked, setChecked] = useState(false);
   const [storeMenuVisible, setStoreMenuVisible] = useState(false);
   const [sortMenuVisible, setSortMenuVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState('진행중'); // 활성화된 탭 상태 추가
+  const [activeTab, setActiveTab] = useState('진행중'); // 활성화된 탭 상태
+  const [modalVisible, setModalVisible] = useState(false); // 모달 상태
+  const [selectedJobId, setSelectedJobId] = useState(null); // 선택된 Job ID
+
+  const openModal = (jobId) => {
+    setSelectedJobId(jobId); // 선택된 Job ID 저장
+    setModalVisible(true); // 모달 표시
+  };
+
+  const closeModal = () => {
+    setSelectedJobId(null); // 선택된 Job ID 초기화
+    setModalVisible(false); // 모달 닫기
+  };
 
   const jobPosts = [
     { id: '1', title: '[티엔미미] 주방', date: '10월 12일(토) 23:00 ~ 01:00', wage: '시급 10,000원', applicants: 0, hires: 0, closed: false },
@@ -23,6 +35,52 @@ export default function JobPostingsScreen() {
 
   const goToRegisterJobScreen = () => {
     router.push('boss/jobselectionscreen');
+  };
+
+  const handleDeleteJob = () => {
+    if (!selectedJobId) {
+      Alert.alert('오류', '선택된 Job ID가 없습니다.');
+      return;
+    }
+
+    Alert.alert(
+      '구인글 삭제 확인',
+      '해당 구인글을 삭제하시겠습니까?',
+      [
+        { text: '취소', style: 'cancel' },
+        {
+          text: '확인',
+          onPress: () => {
+            console.log(`Deleting job with ID: ${selectedJobId}`);
+            // 삭제 처리 로직 추가(API 호출 등)
+            closeModal(); // 모달 닫기
+          },
+        },
+      ]
+    );
+  };
+
+  const handleEditJob = () => {
+    if (!selectedJobId) {
+      Alert.alert('오류', '선택된 Job ID가 없습니다.');
+      return;
+    }
+
+    router.push(`boss/`); // 수정 페이지로 이동
+    closeModal(); // 모달 닫기
+  };
+
+  const handleCloseJob = () => {
+    if (!selectedJobId) {
+      Alert.alert('오류', '선택된 Job ID가 없습니다.');
+      return;
+    }
+
+    // 모집 마감 처리 로직 추가
+    console.log(`Closing job with ID: ${selectedJobId}`);
+    // 여기에서 API 호출 또는 상태 업데이트 로직을 추가할 수 있습니다.
+
+    closeModal(); // 모달 닫기
   };
 
   const renderJobPost = ({ item }) => (
@@ -38,6 +96,13 @@ export default function JobPostingsScreen() {
         <Text style={styles.statusText}>지원 {item.applicants}</Text>
         <Text style={styles.statusText}>채용 {item.hires}</Text>
       </View>
+
+      <TouchableOpacity
+        style={styles.moreIcon}
+        onPress={() => openModal(item.id)} // Job ID 전달
+      >
+        <Text style={styles.moreText}>⋮</Text>
+      </TouchableOpacity>
     </View>
   );
 
@@ -131,6 +196,30 @@ export default function JobPostingsScreen() {
       <TouchableOpacity style={styles.registerButton} onPress={goToRegisterJobScreen}>
         <Text style={styles.registerButtonText}>구인글 등록</Text>
       </TouchableOpacity>
+
+      {/* Modal */}
+      <Modal
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <TouchableOpacity onPress={handleDeleteJob}>
+              <Text style={[styles.modalOption, { color: 'red' }]}>구인글 삭제</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleEditJob}>
+              <Text style={styles.modalOption}>구인글 수정</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleCloseJob}>
+              <Text style={styles.modalOption}>모집 마감</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={closeModal}>
+              <Text style={styles.modalClose}>닫기</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }

@@ -146,6 +146,48 @@ const styles = StyleSheet.create({
       borderRadius: 5,
     },
     registerButtonText: { fontSize: 16, color: '#fff', fontWeight: 'bold' },
+    moreIcon: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+    },
+    moreText: {
+      fontSize: 18,
+      color: '#888',
+    },
+    modalOverlay: {
+      flex: 1,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    modalContent: {
+      backgroundColor: '#fff',
+      borderRadius: 8,
+      padding: 20,
+      width: 300,
+      alignItems: 'center',
+    },
+    modalOption: {
+      fontSize: 16,
+      paddingVertical: 10,
+      color: '#333',
+      textAlign: 'center',
+    },
+    modalClose: {
+      fontSize: 14,
+      color: '#888',
+      paddingTop: 10,
+    },
+    moreButton: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+    },
+    moreButtonText: {
+      fontSize: 20,
+      color: '#888',
+    },
   });
   
   

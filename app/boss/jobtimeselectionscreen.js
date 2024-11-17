@@ -35,7 +35,7 @@ export default function StartTimeSelectionScreen() {
     <View style={styles.container}>
       {/* Header 나중에 수정*/}
       <View style={styles.header}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push()}>
+      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/jobpostingscreen')}>
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
         <Text style={styles.headerTitle}>구인글 등록</Text>
