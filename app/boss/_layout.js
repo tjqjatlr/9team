@@ -61,7 +61,15 @@ export default function Layout() {
       />
       <Stack.Screen
         name="jobpostionsscreen"
-        options={{ title: '나의공고문'}} 
+        options={{ title: '나의공고문',headerShown: false}} 
+      />
+      <Stack.Screen
+        name="editjobscreen"
+        options={{ title: '구인글 수정',headerShown: false }} 
+      />
+      <Stack.Screen
+        name="boss.editpage"
+        options={{ title: '사장_수정', headerShown: false }} 
       />
     </Stack>
   );

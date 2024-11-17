@@ -188,6 +188,24 @@ const styles = StyleSheet.create({
       fontSize: 20,
       color: '#888',
     },
+    header_e: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: 15,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ddd',
+    },
+    backText: {
+      fontSize: 18,
+      color: '#007BFF',
+    },
+    headerTitle_e: {
+      flex: 1,
+      fontSize: 18,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginLeft: -20, // 중앙 정렬을 위한 간격 조정
+    },
   });
   
   

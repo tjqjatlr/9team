@@ -66,7 +66,7 @@ export default function JobPostingsScreen() {
       return;
     }
 
-    router.push(`boss/`); // 수정 페이지로 이동
+    router.push('boss/editjobscreen'); // 수정 페이지로 이동
     closeModal(); // 모달 닫기
   };
 
@@ -109,6 +109,12 @@ export default function JobPostingsScreen() {
   return (
     <View style={styles.container}>
       {/* Header */}
+      <View style={styles.header_e}>
+      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/boss_mainscreen')}>
+        <Text style={styles.backText}>←</Text>
+      </TouchableOpacity>
+      <Text style={styles.headerTitle_e}>나의공고문</Text>
+      </View>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => setStoreMenuVisible(true)} style={styles.storeDropdown}>
           <Text style={styles.headerTitle}>티엔미미 ▼</Text>
