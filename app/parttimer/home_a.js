@@ -1,89 +1,55 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView, FlatList, Dimensions } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Image, ScrollView, FlatList, Dimensions, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as Progress from 'react-native-progress';
+import JobCard from './JobCard';
 import BottomTab_a from './BottomTab_a';
 import styles from './home_a.style';
 
-const jobData = [
+const jobDataInitial = [
   {
     id: '1',
-    title: '노티드',
-    subtitle: '[노티드 충남 아산점] 조리',
-    info: '19:00~23:00 시급 20,000원',
-    tag: '지원중',
-    type: '주방',
+    title: '[충남 아산점]노티드',
+    info_time: '시간 10:00~14:00',
+    info_pay: '시급 12,000원',
+    tag: '주방',
+    status: '지원중',
     image: require('../../assets/knotted.jpg')
   },
   {
     id: '2',
-    title: 'CU',
-    subtitle: '[CU 충남 아산점] 상품진열',
-    tag: '평가',
+    title: '[충남 아산점]CU',
+    info_time: '시간 10:00~14:00',
+    info_pay: '시급 12,000원',
+    tag: '매장관리',
     status: '완료',
     image: require('../../assets/cu.jpg')
   },
   {
     id: '3',
-    title: '고클린',
-    subtitle: '[고클린 충남 아산점] 문서작성',
-    info: '09:00~12:00 시급 10,000원',
-    tag: '알바예정',
-    type: '사무보조',
+    title: '[충남 아산점]고클린',
+    info_time: '시간 10:00~14:00',
+    info_pay: '시급 12,000원',
+    tag: '사무보조',
+    status: '알바예정',
     image: require('../../assets/goclean.jpg')
   },
   {
     id: '4',
-    title: '스타벅스',
-    subtitle: '[스타벅스 서울 강남점] 바리스타',
-    info: '10:00~14:00 시급 12,000원',
-    tag: '진행중',
-    type: '매장관리',
+    title: '[서울 강남점]스타벅스',
+    info_time: '시간 10:00~14:00',
+    info_pay: '시급 12,000원',
+    tag: '매장관리',
+    status: '지원중',
     image: require('../../assets/starbucks.jpg')
   },
   {
     id: '5',
-    title: '맥도날드',
-    subtitle: '[맥도날드 서울 종로점] 카운터',
-    info: '08:00~12:00 시급 9,000원',
-    tag: '지원중',
-    type: '서비스',
-    image: require('../../assets/mcdonald.jpg')
-  },
-  {
-    id: '6',
-    title: '맥도날드',
-    subtitle: '[맥도날드 서울 종로점] 카운터',
-    info: '08:00~12:00 시급 9,000원',
-    tag: '지원중',
-    type: '서비스',
-    image: require('../../assets/mcdonald.jpg')
-  },
-  {
-    id: '7',
-    title: '맥도날드',
-    subtitle: '[맥도날드 서울 종로점] 카운터',
-    info: '08:00~12:00 시급 9,000원',
-    tag: '지원중',
-    type: '서비스',
-    image: require('../../assets/mcdonald.jpg')
-  },
-  {
-    id: '8',
-    title: '맥도날드',
-    subtitle: '[맥도날드 서울 종로점] 카운터',
-    info: '08:00~12:00 시급 9,000원',
-    tag: '지원중',
-    type: '서비스',
-    image: require('../../assets/mcdonald.jpg')
-  },
-  {
-    id: '9',
-    title: '맥도날드',
-    subtitle: '[맥도날드 서울 종로점] 카운터',
-    info: '08:00~12:00 시급 9,000원',
-    tag: '지원중',
-    type: '서비스',
+    title: '[서울 종로점]맥도날드',
+    info_time: '시간 08:00~12:00',
+    info_pay: '시급 9,000원',
+    tag: '서비스',
+    status: '지원중',
     image: require('../../assets/mcdonald.jpg')
   },
 ];
@@ -101,63 +67,59 @@ const adData = [
     image: require('../../assets/cu.jpg'),
     daysLeft: 3,
   },
-  {
-    id: 'ad3',
-    title: '평일 오전 파트 구인',
-    image: require('../../assets/cu.jpg'),
-    daysLeft: 3,
-  },
-  {
-    id: 'ad4',
-    title: '평일 오전 파트 구인',
-    image: require('../../assets/cu.jpg'),
-    daysLeft: 3,
-  },
-  {
-    id: 'ad5',
-    title: '평일 오전 파트 구인',
-    image: require('../../assets/cu.jpg'),
-    daysLeft: 3,
-  },
-  {
-    id: 'ad6',
-    title: '평일 오전 파트 구인',
-    image: require('../../assets/cu.jpg'),
-    daysLeft: 3,
-  },
-  {
-    id: 'ad7',
-    title: '평일 오전 파트 구인',
-    image: require('../../assets/cu.jpg'),
-    daysLeft: 3,
-  },
 ];
 
 const screenWidth = Dimensions.get('window').width;
 
 const HomeA = () => {
+  const [jobData, setJobData] = useState(jobDataInitial);
   const [currentPage, setCurrentPage] = useState(0);
-
   const router = useRouter();
 
   const handleMyPagePress = () => {
     router.push('parttimer/mypage');
   };
 
-  const renderJobCard = ({ item }) => (
-    <View style={styles.jobCard}>
-      <Image source={item.image} style={styles.jobImage} />
-      <View style={styles.jobDetails}>
-        <Text style={styles.jobTitle}>{item.title}</Text>
-        <Text style={styles.jobSubtitle}>{item.subtitle}</Text>
-        {item.info && <Text style={styles.jobInfo}>{item.info}</Text>}
-      </View>
-      <View style={styles.jobTagContainer}>
-        <Text style={styles.jobTag}>{item.tag || item.status}</Text>
-        {item.type && <Text style={styles.jobType}>{item.type}</Text>}
-      </View>
-    </View>
-  );
+  useEffect(() => {
+    const { reviewCompletedId } = router.params || {};
+    if (reviewCompletedId) {
+      setJobData((prevData) => prevData.filter((job) => job.id !== reviewCompletedId));
+      router.setParams({ reviewCompletedId: null });
+    }
+  }, [router.params]);
+
+  const handleReviewPress = (item) => {
+    router.push({
+      pathname: 'parttimer/review',
+      params: {
+        headerImage: item.image,
+        header: item.title,
+        id: item.id,
+      },
+    });
+  };
+
+  const handleDeleteJob = (id) => {
+    Alert.alert(
+      "삭제 확인",
+      "아직 평가가 완료되지 않았습니다. 정말 삭제하시겠습니까?",
+      [
+        { text: "아니오", style: "cancel" },
+        { text: "예", onPress: () => {setJobData(prevData => prevData.filter(job => job.id !== id))} }
+      ]
+    );
+  };
+
+  const handleReviewSubmit = (id) => {
+    Alert.alert('감사합니다', '평가가 완료되었습니다. 참여해주셔서 감사합니다.', [
+      {
+        text: '확인',
+        onPress: () => {
+          setJobData((prevData) => prevData.filter((job) => job.id !== id)); 
+        },
+      },
+    ]);
+  };
 
   const renderAdCard = ({ item }) => (
     <View style={styles.adCard}>
@@ -235,7 +197,7 @@ const HomeA = () => {
               <View style={styles.pageContainer}>
                 {item.map((job) => (
                   <View key={job.id} style={styles.jobCardWrapper}>
-                    {renderJobCard({ item: job })}
+                    <JobCard item={job} onDelete={handleDeleteJob} onReviewPress={handleReviewPress} />
                   </View>
                 ))}
               </View>

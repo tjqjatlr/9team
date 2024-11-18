@@ -92,62 +92,6 @@ const styles = StyleSheet.create({
     width: screenWidth, 
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  jobCardWrapper: {
-    width: screenWidth / 2 - 24, 
-    margin: 8,
-  },
-  jobCard: {
-    flexDirection: 'column',
-    height: 165,
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 8,
-    padding: 12,
-    elevation: 2,
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-  },
-  jobImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginBottom: 8,
-  },
-  jobDetails: {
-    alignItems: 'center',
-  },
-  jobTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333333',
-    textAlign: 'center',
-  },
-  jobSubtitle: {
-    fontSize: 14,
-    color: '#666666',
-    textAlign: 'center',
-  },
-  jobInfo: {
-    fontSize: 12,
-    color: '#999999',
-  },
-  jobTagContainer: {
-    alignItems: 'center',
-    marginTop: 8,
-  },
-  jobTag: {
-    fontSize: 12,
-    color: '#6EA8DA',
-  },
-  jobType: {
-    fontSize: 12,
-    color: '#999999',
-  },
-  pageContainer: {
-    width: screenWidth, 
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     justifyContent: 'flex-start',
 },
   jobCardWrapper: {

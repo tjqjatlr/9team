@@ -1,11 +1,23 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView, TextInput, Modal, FlatList } from 'react-native';
 import { useRouter } from 'expo-router';
 import { FontAwesome, MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { RadarChart } from '@salmonco/react-native-radar-chart';
 import styles from './mypage.style';
 
 const MyPage = () => {
+  const [selfIntroText, setSelfIntroText] = useState('잘 부탁드립니다!');
+  const [isEditingSelfIntro, setIsEditingSelfIntro] = useState(false);
+  const [tempSelfIntroText, setTempSelfIntroText] = useState(selfIntroText);
+  const [isKeywordModalVisible, setIsKeywordModalVisible] = useState(false);
+  const [selectedKeywords, setSelectedKeywords] = useState(['서빙', '사무보조', '주방']);
+  const [tempSelectedKeywords, setTempSelectedKeywords] = useState([]);
+
+  const keywordOptions = [
+    '주방', '서빙', '매장관리', '사무보조', '단순노무', '방송/행사스텝',
+    '운송/배달', '생산/제조', '건설', '물류', '미디어',
+  ];
+
   const radarData = [
     { label: '고객응대', value: 59 },
     { label: '책임감', value: 59 },
@@ -17,9 +29,49 @@ const MyPage = () => {
 
   const router = useRouter()
 
-  const handleLogoutPress = () =>{
+  const handleLogoutPress = () => {
     router.push('login/login')
   }
+
+  const toggleEditSelfIntro = () => {
+    setIsEditingSelfIntro(true);
+    setTempSelfIntroText(selfIntroText);
+  };
+
+  const handleSelfIntroChange = (text) => {
+    setTempSelfIntroText(text);
+  };
+
+  const saveSelfIntro = () => {
+    setSelfIntroText(tempSelfIntroText);
+    setIsEditingSelfIntro(false);
+  };
+
+  const cancelEditSelfIntro = () => {
+    setIsEditingSelfIntro(false);
+  };
+
+  const toggleKeywordModal = () => {
+    setIsKeywordModalVisible(!isKeywordModalVisible);
+    if (!isKeywordModalVisible) {
+      setTempSelectedKeywords(selectedKeywords);
+    }
+  };
+
+  const handleKeywordSelect = (keyword) => {
+    if (tempSelectedKeywords.includes(keyword)) {
+      setTempSelectedKeywords(tempSelectedKeywords.filter((item) => item !== keyword));
+    } else if (tempSelectedKeywords.length < 3) {
+      setTempSelectedKeywords([...tempSelectedKeywords, keyword]);
+    }
+  };
+
+  const handleKeywordConfirm = () => {
+    setSelectedKeywords(tempSelectedKeywords);
+    toggleKeywordModal();
+  };
+
+  const isKeywordSelected = (keyword) => tempSelectedKeywords.includes(keyword);
 
   return (
     <ScrollView>
@@ -78,7 +130,6 @@ const MyPage = () => {
               </View>
             </View>
           </View>
-
           <View style={styles.preferenceContainer}>
             <Text style={styles.preferenceHeader}>희망 근무 시간대</Text>
             <View style={styles.preferenceContent}>
@@ -119,6 +170,7 @@ const MyPage = () => {
             labelDistance={1.25}
           />
         </View>
+
         {/* Radar Chart Info Container */}
         <View style={styles.radarInfoContainer}>
           {radarData.map((item, index) => (
@@ -133,32 +185,99 @@ const MyPage = () => {
         <View style={styles.additionalContentContainer}>
           <View style={styles.keywordContainer}>
             <Text style={styles.sectionHeader}>관심 키워드</Text>
-            <Ionicons name="pencil" size={16} color="#000" />
+            <TouchableOpacity onPress={toggleKeywordModal}>
+              <Ionicons name="pencil" size={16} color="#000" />
+            </TouchableOpacity>
           </View>
           <View style={styles.divider} />
           <View style={styles.keywordTagsContainer}>
-            {['서빙', '사무보조', '주방', '미디어'].map((keyword, index) => (
+            {selectedKeywords.map((keyword, index) => (
               <View key={index} style={styles.keywordTag}>
                 <Text style={styles.keywordText}>{keyword}</Text>
               </View>
             ))}
           </View>
 
+          {/* 키워드 선택 모달 */}
+          <Modal
+            visible={isKeywordModalVisible}
+            animationType="slide"
+            transparent={true}
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <View style={styles.modalHeader}>
+                  <Text style={styles.modalTitle}>관심 키워드를 선택해주세요</Text>
+                  <TouchableOpacity onPress={toggleKeywordModal}>
+                    <Text style={styles.closeButton}>x</Text>
+                  </TouchableOpacity>
+                </View>
+                <FlatList
+                  data={keywordOptions}
+                  numColumns={2}
+                  keyExtractor={(item) => item}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity
+                      style={[
+                        styles.keywordOption,
+                        isKeywordSelected(item) && styles.selectedKeywordOption,
+                      ]}
+                      onPress={() => handleKeywordSelect(item)}
+                    >
+                      <Text
+                        style={[
+                          styles.keywordOptionText,
+                          isKeywordSelected(item) && styles.selectedkeywordOptionText,
+                        ]}
+                      >
+                        {item}
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+                />
+                <TouchableOpacity
+                  style={styles.confirmButton}
+                  onPress={handleKeywordConfirm}
+                >
+                  <Text style={styles.confirmButtonText}>완료</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+
           <View style={styles.selfIntroContainer}>
             <Text style={styles.sectionHeader}>자기소개</Text>
-            <Ionicons name="pencil" size={16} color="#000" />
+            <TouchableOpacity onPress={toggleEditSelfIntro}>
+              <Ionicons name="pencil" size={16} color="#000" />
+            </TouchableOpacity>
           </View>
           <View style={styles.divider} />
-          <Text style={styles.selfIntroText}>잘 부탁드립니다!</Text>
-
+          {isEditingSelfIntro ? (
+            <View style={styles.selfIntroEditContainer}>
+              <TextInput
+                style={styles.selfIntroInput}
+                value={tempSelfIntroText}
+                onChangeText={handleSelfIntroChange}
+                placeholder="자기소개를 입력하세요"
+              />
+              <View style={styles.buttonRow}>
+                <TouchableOpacity style={styles.saveButton} onPress={saveSelfIntro}>
+                  <Text style={styles.saveButtonText}>저장</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.cancelButton} onPress={cancelEditSelfIntro}>
+                  <Text style={styles.cancelButtonText}>취소</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ) : (
+            <Text style={styles.selfIntroText}>{selfIntroText}</Text>
+          )}
           <View style={styles.experienceContainer}>
             <Text style={styles.sectionHeader}>경력 사항</Text>
             <Text style={styles.experienceCount}>3개</Text>
             <Ionicons name="chevron-forward" size={16} color="#000" />
           </View>
-
           <View style={styles.divider} />
-
           <TouchableOpacity style={styles.logoutButton} onPress={handleLogoutPress}>
             <Text style={styles.logoutButtonText}>로그아웃</Text>
           </TouchableOpacity>

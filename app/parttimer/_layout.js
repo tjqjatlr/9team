@@ -61,6 +61,13 @@ export default function Layout() {
           headerTitleAlign: 'center',
         }}
       />
+      <Stack.Screen
+        name="review"
+        options={{ 
+          title: '리뷰',
+          headerTitleAlign: 'center',
+        }}
+      />
     </Stack>
   );
 }
