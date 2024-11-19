@@ -1,4 +1,3 @@
-// review.js
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image, Alert } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
@@ -35,7 +34,7 @@ const ReviewItem = ({ title, initialScore = 0, onScoreChange }) => {
   );
 };
 
-const ReviewScreen = () => {
+const ReviewScreen = ({ callbackFunction }) => {
   const reviews = [
     { title: '쾌적한 작업환경' },
     { title: '역할분담' },
@@ -47,7 +46,7 @@ const ReviewScreen = () => {
   ];
   const [scores, setScores] = useState(Array(reviews.length).fill(0));
   const router = useRouter();
-  const { headerImage, header, id } = useLocalSearchParams();
+  const { headerImage, header } = useLocalSearchParams();
 
   const handleScoreChange = (index, score) => {
     const updatedScores = [...scores];
@@ -64,9 +63,7 @@ const ReviewScreen = () => {
     Alert.alert('감사합니다', '평가가 완료되었습니다. 참여해주셔서 감사합니다.', [
       {
         text: '확인',
-        onPress: () => {
-          router.push({ pathname: 'parttimer/home_a', params: {reviewCompletedId: id}});
-        },
+        onPress: () => { router.push({ pathname: 'parttimer/home_a' })},
       },
     ]);
   };

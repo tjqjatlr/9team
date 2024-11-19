@@ -11,12 +11,10 @@ const JobCard = ({ item, onDelete, onReviewPress  }) => {
           <Ionicons name="close" size={20} color="black" />
         </TouchableOpacity>
       )}
-      {/* Profile Image and Status */}
       <View style={styles.profileStatusContainer}>
         <Image source={item.image} style={styles.jobImage} />
         <Text style={styles.jobStatus}>{item.status}</Text>
       </View>
-      {/* Title and Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.jobTitle} numberOfLines={1} ellipsizeMode="tail">
           {item.title}
@@ -25,7 +23,6 @@ const JobCard = ({ item, onDelete, onReviewPress  }) => {
         {item.info_pay && <Text style={styles.jobInfo}>{item.info_pay}</Text>}
         <Text style={styles.jobTag}>{item.tag}</Text>
       </View>
-      {/* Review Button */}
       {item.status === '완료' && (
         <TouchableOpacity style={styles.reviewButton} onPress={() => onReviewPress(item)}>
           <Text style={styles.reviewButtonText}>평가</Text>

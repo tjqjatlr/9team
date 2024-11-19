@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, FlatList, Dimensions, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as Progress from 'react-native-progress';
@@ -80,14 +80,6 @@ const HomeA = () => {
     router.push('parttimer/mypage');
   };
 
-  useEffect(() => {
-    const { reviewCompletedId } = router.params || {};
-    if (reviewCompletedId) {
-      setJobData((prevData) => prevData.filter((job) => job.id !== reviewCompletedId));
-      router.setParams({ reviewCompletedId: null });
-    }
-  }, [router.params]);
-
   const handleReviewPress = (item) => {
     router.push({
       pathname: 'parttimer/review',
@@ -108,17 +100,6 @@ const HomeA = () => {
         { text: "예", onPress: () => {setJobData(prevData => prevData.filter(job => job.id !== id))} }
       ]
     );
-  };
-
-  const handleReviewSubmit = (id) => {
-    Alert.alert('감사합니다', '평가가 완료되었습니다. 참여해주셔서 감사합니다.', [
-      {
-        text: '확인',
-        onPress: () => {
-          setJobData((prevData) => prevData.filter((job) => job.id !== id)); 
-        },
-      },
-    ]);
   };
 
   const renderAdCard = ({ item }) => (
