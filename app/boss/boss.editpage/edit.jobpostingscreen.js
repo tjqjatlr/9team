@@ -56,7 +56,7 @@ export default function JobPostingScreen() {
             toggleDate(day.dateString);
           }}
           markedDates={selectedDates.reduce((acc, date) => {
-            acc[date] = { selected: true, marked: true, selectedColor: '#6B4EFF' }; // Scheduler와 일치하는 색상
+            acc[date] = { selected: true, marked: true, selectedColor: '#6B4EFF' }; 
             return acc;
           }, {})}
           theme={{

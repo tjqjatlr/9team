@@ -84,28 +84,30 @@ export default function JobPostingsScreen() {
   };
 
   const renderJobPost = ({ item }) => (
-    <View style={styles.jobCard}>
-      <View style={styles.badgeContainer}>
-        <Text style={styles.badgeText}>모집중</Text>
-        <Text style={styles.badgeType}>1명</Text>
-      </View>
-      <Text style={styles.jobTitle}>{item.title}</Text>
-      <Text style={styles.jobDate}>{item.date}</Text>
-      <Text style={styles.jobWage}>{item.wage}</Text>
-      <View style={styles.statusContainer}>
-        <Text style={styles.statusText}>지원 {item.applicants}</Text>
-        <Text style={styles.statusText}>채용 {item.hires}</Text>
-      </View>
-
-      <TouchableOpacity
-        style={styles.moreIcon}
-        onPress={() => openModal(item.id)} // Job ID 전달
-      >
-        <Text style={styles.moreText}>⋮</Text>
-      </TouchableOpacity>
+    <TouchableOpacity
+    style={styles.jobCard}
+    onPress={() => router.push('boss/recruitmentmanagementscreen')}
+  >
+    <View style={styles.badgeContainer}>
+      <Text style={styles.badgeText}>모집중</Text>
+      <Text style={styles.badgeType}>1명</Text>
     </View>
-  );
+    <Text style={styles.jobTitle}>{item.title}</Text>
+    <Text style={styles.jobDate}>{item.date}</Text>
+    <Text style={styles.jobWage}>{item.wage}</Text>
+    <View style={styles.statusContainer}>
+      <Text style={styles.statusText}>지원 {item.applicants}</Text>
+      <Text style={styles.statusText}>채용 {item.hires}</Text>
+    </View>
 
+    <TouchableOpacity
+      style={styles.moreIcon}
+      onPress={() => openModal(item.id)} // Job ID 전달
+    >
+      <Text style={styles.moreText}>⋮</Text>
+    </TouchableOpacity>
+  </TouchableOpacity>
+);
   return (
     <View style={styles.container}>
       {/* Header */}

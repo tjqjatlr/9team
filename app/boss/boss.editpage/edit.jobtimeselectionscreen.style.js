@@ -77,14 +77,14 @@ const styles = StyleSheet.create({
     modalTitle: {
       fontSize: 18,
       fontWeight: 'bold',
-      marginBottom: 5, // '시작 시간' 텍스트와 Picker 간의 여백 줄임
+      marginBottom: 5,
       textAlign: 'center',
     },
     pickerContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      marginVertical: 10, // Picker 상하 여백 최소화
+      marginVertical: 10,
       flex: 1,
     },
     picker: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
       
     },
     confirmButton: {
-      marginTop: 150, // Picker와 확인 버튼 사이 여백 최소화
+      marginTop: 150, 
       backgroundColor: '#007BFF',
       padding: 15,
       alignItems: 'center',

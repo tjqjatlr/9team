@@ -33,7 +33,7 @@ export default function StartTimeSelectionScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header 나중에 수정*/}
+
       <View style={styles.header}>
       <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/jobpostingscreen')}>
         <Text style={styles.backText}>←</Text>
@@ -72,7 +72,7 @@ export default function StartTimeSelectionScreen() {
               <Picker
                 selectedValue={selectedPeriod}
                 style={styles.picker}
-                itemStyle={{ color: '#000000' }} // sdk 52 버전에 따른 오류 수정
+                itemStyle={{ color: '#000000' }}
                 onValueChange={(itemValue) => setSelectedPeriod(itemValue)}
               >
                 <Picker.Item label="오전" value="오전" />
@@ -81,7 +81,7 @@ export default function StartTimeSelectionScreen() {
               <Picker
                 selectedValue={selectedHour}
                 style={styles.picker}
-                itemStyle={{ color: '#000000' }} // sdk 52 버전에 따른 오류 수정
+                itemStyle={{ color: '#000000' }}
                 onValueChange={(itemValue) => setSelectedHour(itemValue)}
               >
                 {[...Array(12).keys()].map((i) => (
@@ -91,7 +91,7 @@ export default function StartTimeSelectionScreen() {
               <Picker
                 selectedValue={selectedMinute}
                 style={styles.picker}
-                itemStyle={{ color: '#000000' }} // sdk 52 버전에 따른 오류 수정
+                itemStyle={{ color: '#000000' }}
                 onValueChange={(itemValue) => setSelectedMinute(itemValue)}
               >
                 {["00", "15", "30", "45"].map((m, index) => (

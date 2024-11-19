@@ -13,13 +13,14 @@ const styles = StyleSheet.create({
     },
     backText: {
       fontSize: 18,
-      color: '#000',
+      color: '#007BFF',
     },
     headerTitle: {
       flex: 1,
       fontSize: 18,
       fontWeight: 'bold',
       textAlign: 'center',
+      marginLeft: -20, // 중앙 정렬을 위한 간격 조정
     },
     progressContainer: {
       height: 4,

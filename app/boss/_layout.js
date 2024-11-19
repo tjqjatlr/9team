@@ -71,6 +71,10 @@ export default function Layout() {
         name="boss.editpage"
         options={{ title: '사장_수정', headerShown: false }} 
       />
+      <Stack.Screen
+        name="recruitmentmanagementscreen"
+        options={{ title: '채용관리', headerShown: false }} 
+      />
     </Stack>
   );
 }

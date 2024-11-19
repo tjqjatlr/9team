@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Checkbox } from 'react-native-paper'; // react-native-paper에서 Checkbox 임포트
+import { Checkbox } from 'react-native-paper';
 import styles from './edit.wageselectionscreen.style';
 
 export default function WageSelectionScreen() {
-  const [isHourly, setIsHourly] = useState(true); // true for 시급, false for 일급
+  const [isHourly, setIsHourly] = useState(true); 
   const [wage, setWage] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const router = useRouter();
@@ -71,9 +71,9 @@ export default function WageSelectionScreen() {
         <View style={styles.checkboxWrapper}>
           <View style={styles.checkboxContainer}>
             <Checkbox
-              status={isChecked ? 'checked' : 'unchecked'} // 상태에 따라 체크 여부 설정
-              onPress={() => setIsChecked(!isChecked)} // 클릭 시 상태 변경
-              color="#007BFF" // 체크된 상태의 색상
+              status={isChecked ? 'checked' : 'unchecked'} 
+              onPress={() => setIsChecked(!isChecked)} 
+              color="#007BFF" 
             />
           </View>
           <Text style={styles.checkboxLabel}>

@@ -97,9 +97,9 @@ const styles = StyleSheet.create({
       marginVertical: 10,
     },
     checkboxContainer: {
-      borderWidth: 1,  // 체크박스 감싸는 선 추가
-      borderColor: '#ddd', // 선 색상 설정
-      borderRadius: 4, // 선의 둥근 모서리
+      borderWidth: 1,  
+      borderColor: '#ddd', 
+      borderRadius: 4, 
      
     },
     checkboxLabel: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     checkboxNote: {
       fontSize: 12,
       color: '#666',
-      marginLeft: 34, // indent to align under checkbox
+      marginLeft: 34, 
     },
     nextButton: {
       padding: 15,

@@ -77,7 +77,7 @@ export default function EndTimeSelectionScreen() {
 
   return (
     <View style={styles.container}>
-    {/* Header router.push 경로 나중에 수정할 것 */}
+
     <View style={styles.header}>
         <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/jobtimeselectionscreen')}> 
         <Text style={styles.backText}>←</Text>
@@ -175,7 +175,7 @@ export default function EndTimeSelectionScreen() {
               <Picker
                 selectedValue={selectedBreakTime}
                 style={styles.breakTimePicker}
-                itemStyle={{ color: '#000000' }} // sdk 52 버전에 따른 오류 수정
+                itemStyle={{ color: '#000000' }}
                 onValueChange={(itemValue) => {
                   setSelectedBreakTime(itemValue);
                   setNetWorkTime(totalWorkTime - itemValue); // 휴게시간 변경 시 실 근무시간 업데이트

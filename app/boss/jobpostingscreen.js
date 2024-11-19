@@ -35,7 +35,7 @@ export default function JobPostingScreen() {
   };
   return (
     <View style={styles.container}>
-    {/* Header 나중에 수정*/}
+
     <View style={styles.header}>
       <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/joblocationscreen')}>
         <Text style={styles.backText}>←</Text>

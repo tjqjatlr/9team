@@ -18,7 +18,7 @@ export default function JobDetailsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* 헤더 경로 나중에 수정 */}
+
       <View style={styles.header}>
       <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/editjobscreen')}>
         <Text style={styles.backText}>←</Text>

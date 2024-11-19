@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f5f5f5' },
   header: { flexDirection: 'row', padding: 15, borderBottomWidth: 1, borderBottomColor: '#ddd' },
   backText: { fontSize: 18, color: '#007BFF' },
-  headerTitle: { flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' },
+  headerTitle: { flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', marginLeft: -20, },
   progressContainer: { height: 4, backgroundColor: '#ddd' },
   progressBar: { height: '100%', backgroundColor: '#007BFF' },
   contentContainer: { padding: 20 },

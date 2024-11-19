@@ -3,9 +3,24 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#f5f5f5' },
-    header: { flexDirection: 'row', alignItems: 'center', padding: 15, borderBottomWidth: 1, borderBottomColor: '#ddd' },
-    backText: { fontSize: 18, color: '#000' },
-    headerTitle: { flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: 15,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ddd',
+    },
+    backText: {
+      fontSize: 18,
+      color: '#007BFF',
+    },
+    headerTitle: {
+      flex: 1,
+      fontSize: 18,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginLeft: -20, // 중앙 정렬을 위한 간격 조정
+    },
     progressContainer: { height: 4, backgroundColor: '#ddd' },
     progressBar: { height: '100%', backgroundColor: '#007BFF' },
     label: { fontSize: 16, fontWeight: 'bold', color: '#333', margin: 20 },
