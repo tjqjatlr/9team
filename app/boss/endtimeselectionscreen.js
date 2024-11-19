@@ -175,6 +175,7 @@ export default function EndTimeSelectionScreen() {
               <Picker
                 selectedValue={selectedBreakTime}
                 style={styles.breakTimePicker}
+                itemStyle={{ color: '#000000' }} // sdk 52 버전에 따른 오류 수정
                 onValueChange={(itemValue) => {
                   setSelectedBreakTime(itemValue);
                   setNetWorkTime(totalWorkTime - itemValue); // 휴게시간 변경 시 실 근무시간 업데이트
