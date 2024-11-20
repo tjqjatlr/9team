@@ -68,6 +68,48 @@ export default function Layout() {
           headerTitleAlign: 'center',
         }}
       />
+      <Stack.Screen
+        name="mypage_edit"
+        options={{ 
+          title: '내 정보 수정',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="edit/change_contact"
+        options={{ 
+          title: '연락처 변경',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="edit/change_password"
+        options={{ 
+          title: '비밀번호 변경',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="edit/change_address"
+        options={{ 
+          title: '주소 변경',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="edit/set_amount"
+        options={{ 
+          title: '목표 금액 설정',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="edit/set_preferred_time"
+        options={{ 
+          title: '선호 시간 변경',
+          headerTitleAlign: 'center',
+        }}
+      />
     </Stack>
   );
 }

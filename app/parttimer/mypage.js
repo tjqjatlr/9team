@@ -32,6 +32,9 @@ const MyPage = () => {
   const handleLogoutPress = () => {
     router.push('login/login')
   }
+  const handleEditPress = () => {
+    router.push('parttimer/mypage_edit')
+  }
 
   const toggleEditSelfIntro = () => {
     setIsEditingSelfIntro(true);
@@ -83,7 +86,7 @@ const MyPage = () => {
             <Text style={styles.userName}>홍길동</Text>
           </View>
           <View style={styles.rightContainer}>
-            <TouchableOpacity style={styles.editButton}>
+            <TouchableOpacity style={styles.editButton} onPress={handleEditPress}>
               <Ionicons name="settings-outline" size={16} color="black" />
               <Text style={styles.editButtonText}>내 정보 수정</Text>
             </TouchableOpacity>

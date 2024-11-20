@@ -60,7 +60,7 @@ const ReviewScreen = ({ callbackFunction }) => {
       return;
     }
 
-    Alert.alert('감사합니다', '평가가 완료되었습니다. 참여해주셔서 감사합니다.', [
+    Alert.alert('완료', '평가가 완료되었습니다. 참여해주셔서 감사합니다.', [
       {
         text: '확인',
         onPress: () => { router.push({ pathname: 'parttimer/home_a' })},
