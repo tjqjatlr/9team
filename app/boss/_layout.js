@@ -79,6 +79,14 @@ export default function Layout() {
         name="profilecard"
         options={{ title: 'AI추천', headerShown: false }} 
       />
+      <Stack.Screen
+        name="parttimerdetailscreen"
+        options={{ title: '알바생상세페이지', headerShown: false }} 
+      />
+      <Stack.Screen
+        name="report_b"
+        options={{ title: '알바생 신고하기' }} 
+      />
     </Stack>
   );
 }

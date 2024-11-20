@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useRouter } from 'expo-router'; // useRouter 사용
 import styles from './findparttimerscreen.style';
 import Boss_BottomTab from './boss_bottomtab';
 import { FontAwesome } from '@expo/vector-icons';
 
 const FindPartTimerScreen = () => {
+  const router = useRouter(); // useRouter 가져오기
+
   const applicants = [
     { id: '1', name: '안성재', age: 42, personality: '???', status: '접속중', message: '저는 부지런하답니다 연락 주세요', type: '찜', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
     { id: '2', name: '최강록', age: 45, personality: 'ISFJ', status: '3분전', message: '일할 준비 만빵! 연락주세요', type: '찜', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
@@ -21,8 +24,16 @@ const FindPartTimerScreen = () => {
     }));
   };
 
+  const handleApplicantPress = () => {
+    // 라우터 푸시로 해당 알바생 상세 페이지로 이동
+    router.push('boss/parttimerdetailscreen');
+  };
+
   const renderApplicant = ({ item }) => (
-    <View style={styles.applicantCard}>
+    <TouchableOpacity
+      onPress={() => handleApplicantPress(item)} // 클릭 시 상세 페이지로 이동
+      style={styles.applicantCard}
+    >
       <View style={styles.profileContainer}>
         <Image source={{ uri: item.image }} style={styles.profileImage} />
         <TouchableOpacity
@@ -55,7 +66,7 @@ const FindPartTimerScreen = () => {
           <Text style={styles.status}>{item.status}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
