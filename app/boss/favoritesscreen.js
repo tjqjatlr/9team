@@ -3,8 +3,10 @@ import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Boss_BottomTab from './boss_bottomtab'; // 하단바 컴포넌트
 import styles from './favoritesscreen.style';
+import { useRouter } from 'expo-router';
 
 const FavoritesScreen = () => {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       {/* 상단 헤더 */}
@@ -23,7 +25,7 @@ const FavoritesScreen = () => {
             style={styles.emptyIcon}
           />
           <Text style={styles.emptyText}>찜한 알바생이 없어요..</Text>
-          <TouchableOpacity style={styles.button} onPress={() => console.log('Find favorite')}>
+          <TouchableOpacity style={styles.button} onPress={() => router.push('boss/findparttimerscreen')}>
             <Text style={styles.buttonText}>알바생 찾으러 가기</Text>
           </TouchableOpacity>
         </View>

@@ -75,6 +75,10 @@ export default function Layout() {
         name="recruitmentmanagementscreen"
         options={{ title: '채용관리', headerShown: false }} 
       />
+        <Stack.Screen
+        name="profilecard"
+        options={{ title: 'AI추천', headerShown: false }} 
+      />
     </Stack>
   );
 }

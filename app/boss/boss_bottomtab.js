@@ -11,7 +11,7 @@ const Boss_BottomTab = () => {
     { name: '홈', icon: 'home-outline', route: 'boss/boss_mainscreen' },
     { name: '인재찾기', icon: 'search-outline', route: 'boss/findparttimerscreen' },
     { name: '채팅방', icon: 'chatbubble-ellipses-outline', route: 'boss/chatroomscreen' },
-    { name: 'AI추천', icon: 'bulb-outline', route: 'boss/AISuggestScreen' },
+    { name: 'AI추천', icon: 'bulb-outline', route: 'boss/profilecard' },
     { name: '근무일정', icon: 'calendar-outline', route: 'boss/shiftschedulescreen' },
     { name: '찜', icon: 'heart-outline', route: 'boss/favoritesscreen' },
   ];
