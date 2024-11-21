@@ -87,6 +87,41 @@ export default function Layout() {
         name="report_b"
         options={{ title: '알바생 신고하기' }} 
       />
+      <Stack.Screen
+        name="mypagescreen"
+        options={{ 
+          title: '마이페이지',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="mypage_editscreen"
+        options={{ 
+          title: '내 정보 수정',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="boss.modification/change_contactscreen"
+        options={{ 
+          title: '연락처 변경',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="boss.modification/change_passwordscreen"
+        options={{ 
+          title: '비밀번호 변경',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="boss.modification/change_addressscreen"
+        options={{ 
+          title: '주소 변경',
+          headerTitleAlign: 'center',
+        }}
+      />
     </Stack>
   );
 }

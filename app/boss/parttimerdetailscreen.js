@@ -116,7 +116,7 @@ const JobDetail = () => {
         gradientColor={{
           startColor: '#FF6B6B',
           endColor: '#FFECEC',
-          count: 6,
+          count: 5,
         }}
         size={220}
         labelSize={14}

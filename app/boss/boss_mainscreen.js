@@ -38,16 +38,6 @@ const Boss_MainScreen = () => {
     </View>
   );
 
-  const renderAdCard = ({ item }) => (
-    <View style={styles.adCard}>
-      <Image source={item.image} style={styles.adImage} />
-      <Text style={styles.adTitle}>{item.title}</Text>
-      <View style={styles.adDaysContainer}>
-        <Text style={styles.adDaysText}>D-{item.daysLeft}</Text>
-      </View>
-    </View>
-  );
-
   const chunkData = (data, size) => {
     const result = [];
     for (let i = 0; i < data.length; i += size) {
@@ -66,7 +56,7 @@ const Boss_MainScreen = () => {
         {/* 상단 로고와 마이페이지 아이콘 */}
         <View style={styles.header}>
           <Text style={styles.logo}>BaroJob</Text>
-          <TouchableOpacity onPress={() => router.push('boss/MyPaaage')}>
+          <TouchableOpacity onPress={() => router.push('boss/mypagescreen')}>
             <Icon name="person-outline" size={24} color="#000" />
           </TouchableOpacity>
         </View>
