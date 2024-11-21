@@ -95,6 +95,13 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
+        name="reviewscreen"
+        options={{ 
+          title: '리뷰',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
         name="mypage_editscreen"
         options={{ 
           title: '내 정보 수정',

@@ -112,6 +112,11 @@ const styles = StyleSheet.create({
       color: '#333333',
       marginBottom: 16,
     },
+    jobCardWrapper: {
+      width: screenWidth / 2 - 24, 
+      marginVertical: 4,
+      marginHorizontal: 4,
+    },
     pageContainer: {
       width: screenWidth, // 전체 화면 너비로 설정하여 페이지처럼 보이게 합니다
       flexDirection: 'row',

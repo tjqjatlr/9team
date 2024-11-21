@@ -1,42 +1,47 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image, Dimensions, FlatList } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image, Dimensions, FlatList, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Boss_BottomTab from './boss_bottomtab'; 
-import styles from './boss_mainscreen.style';
+import ParttimerCard from './ParttimerCard';
 import { useRouter } from 'expo-router';
+import styles from './boss_mainscreen.style';
+
 
 const Boss_MainScreen = () => {
-  const router = useRouter();
   const applicants = [
-    
-    { id: '1', title: '안성재', subtitle: '[조리] 19:00-23:00 시급 20,000원', info: '', tag: '지원중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '2', title: '최강록', subtitle: '[조리] 19:00-23:00 시급 20,000원', info: '', tag: '대기중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '3', title: '백종원', subtitle: '[서빙] 12:00-18:00 시급 18,000원', info: '', tag: '확정', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '4', title: '김하늘', subtitle: '[주방보조] 10:00-14:00 시급 15,000원', info: '', tag: '지원중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '5', title: '이유진', subtitle: '[서빙] 11:00-15:00 시급 18,500원', info: '', tag: '지원중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '6', title: '박영민', subtitle: '[조리] 14:00-20:00 시급 19,000원', info: '', tag: '대기중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '7', title: '정수빈', subtitle: '[서빙] 09:00-13:00 시급 16,000원', info: '', tag: '확정', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '8', title: '홍길동', subtitle: '[배달] 18:00-22:00 시급 17,500원', info: '', tag: '지원중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '9', title: '이상훈', subtitle: '[청소] 07:00-11:00 시급 14,000원', info: '', tag: '확정', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '10', title: '박서연', subtitle: '[서빙] 15:00-19:00 시급 18,200원', info: '', tag: '대기중', type: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+  { id: '1', title: '안성재', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '대기중', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+  { id: '2', title: '최강록', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '승인필요', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+  { id: '3', title: '백종원', info_time: '시간 12:00~18:00', info_pay: '시급 18,000원', tag: '서빙', status: '종료', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+  { id: '4', title: '김하늘', info_time: '시간 10:00~14:00', info_pay: '시급 15,000원', tag: '주방보조', status: '대기중', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+  { id: '5', title: '이유진', info_time: '시간 11:00~15:00', info_pay: '시급 18,500원', tag: '서빙', status: '승인필요', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
 ];
   const screenWidth = Dimensions.get('window').width; 
   const [currentPage, setCurrentPage] = useState(0); 
+  const [parttimerData, setparttimerData] = useState(applicants);
+  const router = useRouter();
 
-  const renderJobCard = ({ item }) => (
-    <View style={styles.jobCard}>
-      <Image source={item.image} style={styles.jobImage} />
-      <View style={styles.jobDetails}>
-        <Text style={styles.jobTitle}>{item.title}</Text>
-        <Text style={styles.jobSubtitle}>{item.subtitle}</Text>
-        {item.info && <Text style={styles.jobInfo}>{item.info}</Text>}
-      </View>
-      <View style={styles.jobTagContainer}>
-        <Text style={styles.jobTag}>{item.tag || item.status}</Text>
-        {item.type && <Text style={styles.jobType}>{item.type}</Text>}
-      </View>
-    </View>
-  );
+  const handleDeleteJob = (id) => {
+    Alert.alert(
+      "삭제 확인",
+      "아직 평가가 완료되지 않았습니다. 정말 삭제하시겠습니까?",
+      [
+        { text: "아니오", style: "cancel" },
+        { text: "예", onPress: () => {setparttimerData(prevData => prevData.filter(job => job.id !== id))} }
+      ]
+    );
+  };
+
+  const handleReviewPress = (item) => {
+    router.push({
+      pathname: 'boss/reviewscreen',
+      params: {
+        headerImage: item.image,
+        header: item.title,
+        id: item.id,
+      },
+    });
+  };
+
 
   const chunkData = (data, size) => {
     const result = [];
@@ -46,7 +51,7 @@ const Boss_MainScreen = () => {
     return result;
   };
 
-  const pagedJobData = chunkData(applicants, 4);
+  const pagedJobData = chunkData(parttimerData, 4);
 
  
 
@@ -91,7 +96,7 @@ const Boss_MainScreen = () => {
               <View style={styles.pageContainer}>
                 {item.map((job) => (
                   <View key={job.id} style={styles.jobCardWrapper}>
-                    {renderJobCard({ item: job })}
+                    <ParttimerCard item={job} onDelete={handleDeleteJob} onReviewPress={handleReviewPress} />
                   </View>
                 ))}
               </View>

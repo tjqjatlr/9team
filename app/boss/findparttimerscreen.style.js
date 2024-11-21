@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', // Align text and icon to the left
     padding: 16,
     backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    marginTop: 10,
+    marginBottom: -15,
   },
   filterButton: {
     flexDirection: 'row',
