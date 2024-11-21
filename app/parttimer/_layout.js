@@ -110,6 +110,10 @@ export default function Layout() {
           headerTitleAlign: 'center',
         }}
       />
+      <Stack.Screen
+        name="profilecard_a"
+        options={{ title: 'AI추천', headerShown: false }} 
+      />
     </Stack>
   );
 }

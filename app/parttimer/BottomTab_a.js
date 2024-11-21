@@ -11,7 +11,7 @@ const BottomTab_a = () => {
     { name: '홈', icon: 'home-outline', route: 'parttimer/home_a' },
     { name: '알바찾기', icon: 'search-outline', route: 'parttimer/findparttimer' },
     { name: '채팅방', icon: 'chatbubble-ellipses-outline', route: 'parttimer/chatroom' },
-    { name: 'AI추천', icon: 'bulb-outline', route: 'parttimer/AISuggestScreen' },
+    { name: 'AI추천', icon: 'bulb-outline', route: 'parttimer/profilecard_a' },
     { name: '근무일정', icon: 'calendar-outline', route: 'parttimer/scheduler' },
     { name: '찜', icon: 'heart-outline', route: 'parttimer/favoritelist' },
   ];
