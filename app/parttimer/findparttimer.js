@@ -13,8 +13,8 @@ const jobListings = [
         time: '19:00~23:00',
         wage: '시급 20,000원',
         image: require('../../assets/knotted.jpg'),
-        tag: '주말',
-        isBookmarked: false,
+        tag: '주방',
+        isBookmarked: true,
     },
     {
         id: '2',

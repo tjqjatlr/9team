@@ -32,6 +32,13 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
+        name="chatroom/[id]"
+        options={({ route }) => ({
+          headerTitle: route.params?.title || '채팅방',
+          headerTitleAlign: 'center',
+        })}
+      />
+      <Stack.Screen
         name="favoritelist"
         options={{ 
           title: '찜 목록', 

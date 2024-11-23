@@ -128,9 +128,6 @@ const HomeA = () => {
         <View style={styles.headerContainer}>
           <Text style={styles.logo}>BaroJob</Text>
           <View style={styles.iconContainer}>
-            <TouchableOpacity>
-              <Image source={require('../../assets/notification.png')} style={styles.icon} />
-            </TouchableOpacity>
             <TouchableOpacity onPress={handleMyPagePress}>
               <Image source={require('../../assets/mypage.png')} style={styles.icon} />
             </TouchableOpacity>
