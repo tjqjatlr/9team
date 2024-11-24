@@ -129,6 +129,13 @@ export default function Layout() {
           headerTitleAlign: 'center',
         }}
       />
+      <Stack.Screen
+        name="chatroom/[id]"
+        options={({ route }) => ({
+          headerTitle: route.params?.title || '채팅방',
+          headerTitleAlign: 'center',
+        })}
+      />
     </Stack>
   );
 }

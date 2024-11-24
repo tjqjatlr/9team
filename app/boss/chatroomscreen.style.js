@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#f8f8f8',
+      backgroundColor: '#FFFFFF',
     },
     header: {
       flexDirection: 'row',
@@ -48,6 +48,41 @@ const styles = StyleSheet.create({
     buttonText: {
       color: '#fff',
       fontSize: 16,
+    },
+    chatListContainer: {
+      paddingVertical: 10,
+      paddingHorizontal: 16,
+    },
+    chatItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: 12,
+      borderBottomWidth: 1,
+      borderBottomColor: '#E0E0E0',
+    },
+    chatImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      marginRight: 16,
+    },
+    chatDetails: {
+      flex: 1,
+    },
+    chatTitle: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginBottom: 4,
+      color: '#333333',
+    },
+    chatLastMessage: {
+      fontSize: 14,
+      color: '#777777',
+    },
+    chatTimestamp: {
+      fontSize: 12,
+      color: '#A9A9A9',
+      textAlign: 'right',
     },
   });
   

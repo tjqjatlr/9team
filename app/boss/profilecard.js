@@ -95,14 +95,7 @@ const profiles = [
         <Image source={{ uri: profile.image }} style={styles.profileImage} />
       </View>
   
-      {/* 화살표 버튼 */}
-      <TouchableOpacity style={styles.arrowLeft(screenHeight)}>
-        <Ionicons name="chevron-back-outline" size={30} color="#333" />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.arrowRight(screenHeight)}>
-        <Ionicons name="chevron-forward-outline" size={30} color="#333" />
-      </TouchableOpacity>
-  
+
       {/* 정보 카드 */}
       <View style={styles.infoBox}>
         <Text style={styles.infoText}>알바 경험: {profile.experience}</Text>

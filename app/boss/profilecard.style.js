@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     padding: 15,
     width: '80%',
     marginBottom: 20,
-    marginTop: 100,
+    marginTop: 10,
   },
   infoText: {
     fontSize: 14,
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',  // 가운데 정렬
     alignItems: 'center',      // 가운데 정렬
     paddingVertical: 20,       // 상하 여백 추가
+    marginBottom: -100,
   },
   subtitle: {
     fontSize: 12,
