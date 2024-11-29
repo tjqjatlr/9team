@@ -7,7 +7,7 @@ const Propensity = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.skipButton}>
-        <Link href="parttimer/home_a" style={styles.skipButtonText}>건너뛰기</Link>
+        <Link href="parttimer/home/home_a" style={styles.skipButtonText}>건너뛰기</Link>
       </TouchableOpacity>
       
       <View style={styles.content}>

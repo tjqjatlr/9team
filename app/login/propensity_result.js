@@ -10,7 +10,7 @@ const PropensityResult = () => {
   const recommendedJobs = ['이벤트 스텝', '행사 진행', '홍보', '모델'];
 
   const handleGoHome = () => {
-    router.push('parttimer/home_a');
+    router.push('parttimer/home/home_a');
   };
 
   return (
