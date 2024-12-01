@@ -25,53 +25,106 @@ const styles = StyleSheet.create({
     },
     tabContainer: {
       flexDirection: 'row',
+      backgroundColor: '#FFF',
       borderBottomWidth: 1,
-      borderBottomColor: '#E0E0E0',
+      borderBottomColor: '#EEE',
     },
     tab: {
       flex: 1,
+      padding: 16,
       alignItems: 'center',
-      paddingVertical: 10,
     },
     activeTab: {
       borderBottomWidth: 2,
-      borderBottomColor: '#007AFF',
+      borderBottomColor: '#007BFF',
     },
     activeTabText: {
-      fontSize: 16,
-      color: '#007AFF',
+      color: '#007BFF',
       fontWeight: 'bold',
     },
     inactiveTabText: {
-      fontSize: 16,
-      color: '#999',
+      color: '#666',
     },
     contentContainer: {
       flex: 1,
-      justifyContent: 'center',
+      padding: 16,
+    },
+    applicantCard: {
+      flexDirection: 'row',
       alignItems: 'center',
-      paddingHorizontal: 20,
+      backgroundColor: '#FFF',
+      padding: 10,
+      marginBottom: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#EEE',
+    },
+    profileImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      marginRight: 10,
+    },
+    textContainer: {
+      flex: 1,
+    },
+    name: {
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    message: {
+      fontSize: 14,
+      color: '#666',
+    },
+    infoRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 5,
+    },
+    personality: {
+      fontSize: 12,
+      color: '#999',
+    },
+    status: {
+      fontSize: 12,
+      color: '#999',
+    },
+    actionButtons: {
+      flexDirection: 'row',
+    },
+    acceptButton: {
+      backgroundColor: '#4CAF50',
+      padding: 8,
+      borderRadius: 5,
+      marginLeft: 5,
+    },
+    rejectButton: {
+      backgroundColor: '#F44336',
+      padding: 8,
+      borderRadius: 5,
+      marginLeft: 5,
+    },
+    acceptButtonText: {
+      color: '#FFF',
+      fontWeight: 'bold',
+    },
+    rejectButtonText: {
+      color: '#FFF',
+      fontWeight: 'bold',
+    },
+    emptyStateContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 50,
     },
     placeholderImage: {
-      width: 150,
-      height: 150,
-      marginBottom: 20,
+      width: 128,
+      height: 128,
+      marginBottom: 10,
     },
     noApplicantsText: {
       fontSize: 16,
-      color: '#666',
-      marginBottom: 10,
-    },
-    suggestButton: {
-      paddingHorizontal: 15,
-      paddingVertical: 8,
-      backgroundColor: '#007AFF',
-      borderRadius: 5,
-    },
-    suggestButtonText: {
-      fontSize: 16,
-      color: '#fff',
-      fontWeight: 'bold',
+      color: '#999',
+      textAlign: 'center',
     },
   });
 
