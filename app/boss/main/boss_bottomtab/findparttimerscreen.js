@@ -74,6 +74,9 @@ const FindPartTimerScreen = () => {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerText}>알바 찾기</Text>
+        <TouchableOpacity onPress={() => console.log('Search pressed')}>
+          <Icon name="search-outline" size={24} color="#000" />
+        </TouchableOpacity>
       </View>
 
       {/* Location Section */}

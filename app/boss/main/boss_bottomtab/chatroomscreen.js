@@ -59,6 +59,9 @@ const ChatRoomScreen = () => {
       {/* 상단 헤더 */}
       <View style={styles.header}>
         <Text style={styles.headerText}>채팅방</Text>
+        <TouchableOpacity onPress={() => console.log('Search pressed')}>
+          <Icon name="search-outline" size={24} color="#000" />
+        </TouchableOpacity>
       </View>
 
       {chatRooms.length === 0 ? (
