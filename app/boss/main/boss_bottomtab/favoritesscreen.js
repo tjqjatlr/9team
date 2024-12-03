@@ -35,6 +35,8 @@ const FavoritesScreen = () => {
       )
     );
   };
+
+  // 찜 아이템 렌더링
   const renderJobItem = ({ item }) => (
     <TouchableOpacity
       onPress={() => router.push('boss/main/parttimerdetail/parttimerdetailscreen')}
@@ -80,14 +82,15 @@ const FavoritesScreen = () => {
           <Icon name="search-outline" size={24} color="#000" />
         </TouchableOpacity>
       </View>
+
+      {/* 찜 데이터 상태에 따라 다른 화면 표시 */}
       {favorites.length === 0 ? (
-        // 데이터가 없을 때
-        <View style={styles.emptycontainer}>
+        <View style={styles.emptyContainer}>
           <Image
             source={require('../../../../assets/nofavorites.png')}
-            style={styles.icon}
+            style={styles.emptyIcon}
           />
-          <Text style={styles.text}>찜한 일자리가 없어요...</Text>
+          <Text style={styles.emptyText}>찜한 일자리가 없어요...</Text>
           <TouchableOpacity
             style={styles.button}
             onPress={() => router.push('boss/main/boss_bottomtab/findparttimer')}
@@ -96,14 +99,15 @@ const FavoritesScreen = () => {
           </TouchableOpacity>
         </View>
       ) : (
-        // 데이터가 있을 때
         <FlatList
           data={favorites}
           keyExtractor={(item) => item.id}
           renderItem={renderJobItem}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
+          contentContainerStyle={styles.listContainer}
         />
       )}
+
+      {/* 하단바 */}
       <Boss_BottomTab />
     </View>
   );
