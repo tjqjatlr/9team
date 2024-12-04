@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     },
     header: {
         padding: 16,
+        marginBottom: -15,
     },
     location: {
         fontSize: 18,
@@ -35,26 +36,47 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     dateSelector: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        backgroundColor: '#fff',
         paddingVertical: 8,
+    },
+    dateContainerStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    monthText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#333333',
+        marginVertical: 8,
+        paddingLeft: 4,
+        backgroundColor: '#F1F1F1',
+        padding: 4,
+        borderRadius: 4,
+    },
+    monthChangedDateContainer: {
+        borderColor: '#FF5151', 
     },
     dateContainer: {
         alignItems: 'center',
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        backgroundColor: '#F0F0F0',
-        borderRadius: 8,
+        justifyContent: 'center',
+        width: 50,
+        height: 50,
+        marginHorizontal: 4,
+        borderRadius: 8, 
+        borderWidth: 1,
+        borderColor: '#d9d9d9',
+        backgroundColor: '#fff',
     },
     selectedDateContainer: {
         backgroundColor: '#007AFF',
     },
     dateText: {
-        fontSize: 14,
-        color: '#333',
+        fontSize: 12,
+        color: '#333333',
     },
     selectedDateText: {
-        color: '#FFF',
+        color: '#ffffff',
         fontWeight: 'bold',
     },
     jobItem: {
@@ -68,6 +90,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 25,
         marginRight: 16,
+        top: 3,
     },
     bookmarkContainer: {
         flexDirection: 'row',
@@ -109,7 +132,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 4,
     },
-    jobLocation: {
+    jobSubtitle: {
         fontSize: 14,
         color: '#777',
         marginBottom: 4,

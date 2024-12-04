@@ -84,11 +84,22 @@ const Scheduler = () => {
     );
   };
 
+  // 근무 일정이 있는 날짜를 markedDates에 마킹하기
+  const markedDates = Object.keys(workRecords).reduce((acc, date) => {
+    acc[date] = {
+      marked: true,
+      dotColor: '#FF6B6B', // 근무 일정이 있는 날짜는 빨간 점으로 표시
+      selectedColor: '#6B4EFF', // 선택된 날짜의 배경색
+    };
+    return acc;
+  }, {});
+
   return (
     <View style={styles.container}>
       <Calendar
         onDayPress={(day) => handleDateSelect(day.dateString)}
         markedDates={{
+          ...markedDates,
           [selectedDate]: { selected: true, marked: true, selectedColor: '#6B4EFF' },
         }}
         theme={{

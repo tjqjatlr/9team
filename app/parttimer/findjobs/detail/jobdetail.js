@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, Linking, ScrollView } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { MapViewComponent } from '../../../components';
+// import { MapViewComponent } from '../../../components';
 import * as Clipboard from 'expo-clipboard';
 import styles from './jobdetail.style';
 

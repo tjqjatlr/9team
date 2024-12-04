@@ -29,13 +29,6 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#FFFFFF',
   },
-  locationText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 4,
-    textAlign: 'left', 
-  },
   userText: {
     fontSize: 14,
     color: '#333',
@@ -149,6 +142,17 @@ const styles = StyleSheet.create({
   adDaysText: {
     fontSize: 12,
     color: '#333',
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  emptyText: {
+    fontSize: 16,
+    color: '#888',
+    textAlign: 'center',
   },
 });
 

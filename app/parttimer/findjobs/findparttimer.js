@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Image, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import { BottomTab_a } from '../../components';
@@ -9,7 +9,7 @@ const jobListings = [
     {
         id: '1',
         title: '노티드',
-        location: '[노티드 충남 아산점] 조리',
+        subtitle: '[노티드 충남 아산점] 조리',
         time: '19:00~23:00',
         wage: '시급 20,000원',
         image: require('../../../assets/knotted.jpg'),
@@ -19,7 +19,7 @@ const jobListings = [
     {
         id: '2',
         title: '고클린',
-        location: '[고클린 충남 아산점] 문서작성',
+        subtitle: '[고클린 충남 아산점] 문서작성',
         time: '09:00~12:00',
         wage: '시급 10,000원',
         image: require('../../../assets/goclean.jpg'),
@@ -29,7 +29,27 @@ const jobListings = [
     {
         id: '3',
         title: 'CU',
-        location: '[CU 충남 아산점] 상품포장',
+        subtitle: '[CU 충남 아산점] 상품포장',
+        time: '19:00~23:00',
+        wage: '시급 9,900원',
+        image: require('../../../assets/cu.jpg'),
+        tag: '매장관리',
+        isBookmarked: false,
+    },
+    {
+        id: '4',
+        title: 'CU',
+        subtitle: '[CU 충남 아산점] 상품포장',
+        time: '19:00~23:00',
+        wage: '시급 9,900원',
+        image: require('../../../assets/cu.jpg'),
+        tag: '매장관리',
+        isBookmarked: false,
+    },
+    {
+        id: '5',
+        title: 'CU',
+        subtitle: '[CU 충남 아산점] 상품포장',
         time: '19:00~23:00',
         wage: '시급 9,900원',
         image: require('../../../assets/cu.jpg'),
@@ -40,31 +60,43 @@ const jobListings = [
 
 const FindPartTimer = () => {
     const [listings, setListings] = useState(jobListings);
-    const [selectedTab, setSelectedTab] = useState('단기알바');
     const [selectedDate, setSelectedDate] = useState(null);
     const [dates, setDates] = useState([]);
-    const router = useRouter(); 
+    const router = useRouter();
 
     useEffect(() => {
         const today = new Date();
         const newDates = [];
         const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+        const currentMonth = today.getMonth(); 
 
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 21; i++) {
             const currentDate = new Date();
             currentDate.setDate(today.getDate() + i);
 
             const day = i === 0 ? '오늘' : dayNames[currentDate.getDay()];
             const date = `${currentDate.getDate()}일`;
+            const key = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`;
+            const isMonthChanged = currentDate.getMonth() !== currentMonth; 
 
-            newDates.push({ day, date });
+            newDates.push({ key, day, date, isMonthChanged, month: currentDate.getMonth() + 1 });
         }
 
         setDates(newDates);
     }, []);
 
-    const toggleDateSelection = (date) => {
-        setSelectedDate(selectedDate === date ? null : date);
+    const toggleDateSelection = (key) => {
+        setSelectedDate(selectedDate === key ? null : key);
+    };
+
+    const getMonth = () => {
+        if (selectedDate) {
+            const selected = dates.find((d) => d.key === selectedDate);
+            return selected ? `${selected.month}월` : '';
+        }
+
+        const today = new Date();
+        return `${today.getMonth() + 1}월`;
     };
 
     const toggleBookmark = (id) => {
@@ -77,13 +109,13 @@ const FindPartTimer = () => {
 
     const renderJobItem = ({ item }) => (
         <TouchableOpacity
-            onPress={() => router.push('parttimer/findjobs/detail/jobdetail')} 
+            onPress={() => router.push('parttimer/findjobs/detail/jobdetail')}
             style={styles.jobItem}
         >
             <Image source={item.image} style={styles.jobImage} />
             <View style={styles.jobDetails}>
                 <Text style={styles.jobTitle}>{item.title}</Text>
-                <Text style={styles.jobLocation}>{item.location}</Text>
+                <Text style={styles.jobSubtitle}>{item.subtitle}</Text>
                 <TouchableOpacity
                     style={[
                         styles.bookmarkContainer,
@@ -113,66 +145,53 @@ const FindPartTimer = () => {
         </TouchableOpacity>
     );
 
-    const tabs = ['단기알바', '급구알바', '중기알바'];
-
     return (
         <View style={styles.container}>
+            {/* Header */}
             <View style={styles.header}>
                 <Text style={styles.location}>충남 아산시 ▼</Text>
             </View>
 
-            {/* Tabs */}
-            <View style={styles.tabs}>
-                {tabs.map((tab) => (
-                    <TouchableOpacity
-                        key={tab}
-                        onPress={() => setSelectedTab(tab)}
-                        style={[
-                            styles.tab,
-                            selectedTab === tab && styles.activeTab,
-                        ]}
-                    >
-                        <Text
-                            style={[
-                                styles.tabText,
-                                selectedTab === tab && styles.activeTabText,
-                            ]}
-                        >
-                            {tab}
-                        </Text>
-                    </TouchableOpacity>
-                ))}
-            </View>
-
             {/* Date Selector */}
             <View style={styles.dateSelector}>
-                {dates.map(({ day, date }) => (
-                    <TouchableOpacity
-                        key={date}
-                        onPress={() => toggleDateSelection(date)}
-                        style={[
-                            styles.dateContainer,
-                            selectedDate === date && styles.selectedDateContainer,
-                        ]}
-                    >
-                        <Text
+                {/* 동적으로 변경되는 달 표시 */}
+                <Text style={styles.monthText}>{getMonth()}</Text>
+
+                {/* 날짜 리스트 */}
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.dateContainerStyle}
+                >
+                    {dates.map(({ key, day, date, isMonthChanged }) => (
+                        <TouchableOpacity
+                            key={key}
+                            onPress={() => toggleDateSelection(key)}
                             style={[
-                                styles.dateText,
-                                selectedDate === date && styles.selectedDateText,
+                                styles.dateContainer,
+                                selectedDate === key && styles.selectedDateContainer,
+                                isMonthChanged && styles.monthChangedDateContainer, // 월 변경시 배경색 변경
                             ]}
                         >
-                            {day}
-                        </Text>
-                        <Text
-                            style={[
-                                styles.dateText,
-                                selectedDate === date && styles.selectedDateText,
-                            ]}
-                        >
-                            {date}
-                        </Text>
-                    </TouchableOpacity>
-                ))}
+                            <Text
+                                style={[
+                                    styles.dateText,
+                                    selectedDate === key && styles.selectedDateText,
+                                ]}
+                            >
+                                {day}
+                            </Text>
+                            <Text
+                                style={[
+                                    styles.dateText,
+                                    selectedDate === key && styles.selectedDateText,
+                                ]}
+                            >
+                                {date}
+                            </Text>
+                        </TouchableOpacity>
+                    ))}
+                </ScrollView>
             </View>
 
             {/* Job Listings */}
@@ -180,6 +199,7 @@ const FindPartTimer = () => {
                 data={listings}
                 renderItem={renderJobItem}
                 keyExtractor={(item) => item.id}
+                contentContainerStyle={{ paddingBottom: 60 }}
             />
 
             <BottomTab_a />

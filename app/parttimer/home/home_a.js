@@ -134,7 +134,6 @@ const HomeA = () => {
         </View>
 
         <View style={styles.attendanceContainer}>
-          <Text style={styles.locationText}>충남 아산시</Text>
           <Text style={styles.userText}>홍길동님 🎖</Text>
           <View style={styles.profileRow}>
             <Image source={require('../../../assets/profile.png')} style={styles.profileImage} />
@@ -189,6 +188,12 @@ const HomeA = () => {
               const newPage = Math.round(e.nativeEvent.contentOffset.x / screenWidth);
               setCurrentPage(newPage);
             }}
+            ListEmptyComponent={
+              <View style={styles.emptyContainer}>
+                <Text style={styles.emptyText}>현재 진행중인 알바가 없습니다.</Text>
+              </View>
+            }
+            contentContainerStyle={{ flexGrow: 1}}
           />
           <View style={styles.pageIndicator}>
             {pagedJobData.map((_, index) => (
@@ -205,6 +210,12 @@ const HomeA = () => {
             keyExtractor={(item) => item.id}
             horizontal
             showsHorizontalScrollIndicator={false}
+            ListEmptyComponent={
+              <View style={styles.emptyContainer}>
+                <Text style={styles.emptyText}>현재 광고가 존재하지 않습니다.</Text>
+              </View>
+            }
+            contentContainerStyle={{ flexGrow: 1}}
           />
         </View>
       </ScrollView>
