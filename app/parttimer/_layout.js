@@ -62,7 +62,7 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
-        name="findjobs/report"
+        name="findjobs/detail/report"
         options={{ 
           title: '구인글 신고하기',
           headerTitleAlign: 'center',

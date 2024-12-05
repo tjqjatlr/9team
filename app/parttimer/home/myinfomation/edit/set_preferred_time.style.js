@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   daysContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 30,
+    marginBottom: 20,
   },
   dayButton: {
     width: 40,
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
   },
   timeContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 30,
+    justifyContent: 'space-around',
+    marginBottom: 20,
   },
   timeButton: {
     flex: 1,
@@ -60,15 +60,39 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
     marginHorizontal: 5,
   },
+  selectedTimeButton: {
+    backgroundColor: '#4A90E2',
+    borderColor: '#4A90E2',
+  },
   timeButtonText: {
     fontSize: 16,
     color: '#333333',
   },
-  timeSeparator: {
-    fontSize: 30,
-    color: '#595959',
-    marginHorizontal: 20,
-    marginTop: 5,
+  selectedTimeButtonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+  indifferentButton: {
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#CCCCCC',
+    borderRadius: 8,
+    backgroundColor: '#F5F5F5',
+    marginVertical: 10,
+  },
+  selectedIndifferentButton: {
+    backgroundColor: '#4A90E2',
+    borderColor: '#4A90E2',
+  },
+  indifferentButtonText: {
+    fontSize: 16,
+    color: '#333333',
+  },
+  selectedIndifferentButtonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
   },
   saveButton: {
     backgroundColor: '#66ABBA',
@@ -84,3 +108,4 @@ const styles = StyleSheet.create({
 });
 
 export default styles;
+  

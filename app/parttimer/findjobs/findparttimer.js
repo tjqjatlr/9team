@@ -70,7 +70,7 @@ const FindPartTimer = () => {
         const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
         const currentMonth = today.getMonth(); 
 
-        for (let i = 0; i < 21; i++) {
+        for (let i = 0; i < 60; i++) {
             const currentDate = new Date();
             currentDate.setDate(today.getDate() + i);
 

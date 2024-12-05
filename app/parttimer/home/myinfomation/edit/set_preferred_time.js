@@ -1,39 +1,43 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import { TimePickerModal } from 'react-native-paper-dates';
 import styles from './set_preferred_time.style';
 
 const SetPreferredTime = () => {
-  const [selectedDays, setSelectedDays] = useState([]); 
-  const [startTime, setStartTime] = useState(null); 
-  const [endTime, setEndTime] = useState(null); 
-  const [isStartPickerVisible, setStartPickerVisible] = useState(false);
-  const [isEndPickerVisible, setEndPickerVisible] = useState(false);
-  
-  const router = useRouter()
+  const [selectedDays, setSelectedDays] = useState([]);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [isDayIndifferent, setIsDayIndifferent] = useState(false);
+  const [isTimeIndifferent, setIsTimeIndifferent] = useState(false);
+
+  const router = useRouter();
 
   const days = ['월', '화', '수', '목', '금', '토', '일'];
+  const timePeriods = ['오전', '오후', '저녁', '새벽'];
 
   const toggleDay = (day) => {
+    if (isDayIndifferent) return; 
     if (selectedDays.includes(day)) {
       setSelectedDays(selectedDays.filter((d) => d !== day));
-    } else {
+    } else if (selectedDays.length < 3) {
       setSelectedDays([...selectedDays, day]);
+    } else {
+      Alert.alert('알림', '최대 3개의 요일만 선택 가능합니다.');
     }
   };
 
   const handleSave = () => {
-    if (!startTime || !endTime || selectedDays.length === 0) {
-      Alert.alert('알림', '요일과 시간을 모두 선택해주세요.');
+    if (!isDayIndifferent && selectedDays.length === 0) {
+      Alert.alert('알림', '선호 요일을 선택하거나 "상관없음"을 활성화해주세요.');
+      return;
+    }
+    if (!isTimeIndifferent && !selectedTime) {
+      Alert.alert('알림', '선호 시간을 선택하거나 "상관없음"을 활성화해주세요.');
       return;
     }
 
-    Alert.alert(
-      '저장 완료',
-      `선호 요일: ${selectedDays.join(', ')}\n시작 시간: ${startTime}\n종료 시간: ${endTime}`
-    );
-    router.back(); 
+    const result = `선호 요일: ${isDayIndifferent ? '상관없음' : selectedDays.join(', ')}\n선호 시간: ${isTimeIndifferent ? '상관없음' : selectedTime}`;
+    Alert.alert('저장 완료', result);
+    router.back();
   };
 
   return (
@@ -48,63 +52,82 @@ const SetPreferredTime = () => {
             key={day}
             style={[
               styles.dayButton,
-              selectedDays.includes(day) && styles.selectedDayButton,
+              selectedDays.includes(day) && !isDayIndifferent && styles.selectedDayButton,
             ]}
             onPress={() => toggleDay(day)}
+            disabled={isDayIndifferent} 
           >
             <Text
               style={[
                 styles.dayButtonText,
-                selectedDays.includes(day) && styles.selectedDayButtonText,
+                selectedDays.includes(day) && !isDayIndifferent && styles.selectedDayButtonText,
               ]}
             >
               {day}
             </Text>
           </TouchableOpacity>
         ))}
+          <TouchableOpacity
+          style={[styles.dayButton, isDayIndifferent && styles.selectedDayButton]}
+          onPress={() => {
+            setIsDayIndifferent(!isDayIndifferent);
+            if (!isDayIndifferent) setSelectedDays([]); 
+          }}
+        >
+          <Text
+            style={[
+              styles.dayButtonText,
+              isDayIndifferent && styles.selectedDayButtonText,
+            ]}
+          >
+            무관
+          </Text>
+        </TouchableOpacity>
       </View>
+      
 
-      {/* 시간 설정 */}
+      {/* 시간 선택 */}
       <Text style={styles.label}>선호 시간</Text>
       <View style={styles.timeContainer}>
-        <TouchableOpacity
-          style={styles.timeButton}
-          onPress={() => setStartPickerVisible(true)}
-        >
-          <Text style={styles.timeButtonText}>
-            {startTime || '시작 시간'}
-          </Text>
-        </TouchableOpacity>
+        {timePeriods.map((period) => (
+          <TouchableOpacity
+            key={period}
+            style={[
+              styles.timeButton,
+              selectedTime === period && !isTimeIndifferent && styles.selectedTimeButton,
+            ]}
+            onPress={() => !isTimeIndifferent && setSelectedTime(period)}
+            disabled={isTimeIndifferent}
+          >
+            <Text
+              style={[
+                styles.timeButtonText,
+                selectedTime === period && !isTimeIndifferent && styles.selectedTimeButtonText,
+              ]}
+            >
+              {period}
+            </Text>
+          </TouchableOpacity>
+        ))}
 
-        <Text style={styles.timeSeparator}>~</Text>
-
-        <TouchableOpacity
-          style={styles.timeButton}
-          onPress={() => setEndPickerVisible(true)}
+          <TouchableOpacity
+          style={[styles.timeButton, isTimeIndifferent && styles.selectedTimeButton]}
+          onPress={() => {
+            setIsTimeIndifferent(!isTimeIndifferent);
+            if (!isTimeIndifferent) setSelectedTime(null); 
+          }}
         >
-          <Text style={styles.timeButtonText}>
-            {endTime || '종료 시간'}
+          <Text
+            style={[
+              styles.timeButtonText,
+              isTimeIndifferent && styles.selectedTimeButtonText,
+            ]}
+          >
+            무관
           </Text>
         </TouchableOpacity>
       </View>
-
-      {/* 시간 선택 모달 */}
-      <TimePickerModal
-        visible={isStartPickerVisible}
-        onDismiss={() => setStartPickerVisible(false)}
-        onConfirm={(time) => {
-          setStartPickerVisible(false);
-          setStartTime(`${time.hours}:${time.minutes}`);
-        }}
-      />
-      <TimePickerModal
-        visible={isEndPickerVisible}
-        onDismiss={() => setEndPickerVisible(false)}
-        onConfirm={(time) => {
-          setEndPickerVisible(false);
-          setEndTime(`${time.hours}:${time.minutes}`);
-        }}
-      />
+      
 
       {/* 저장 버튼 */}
       <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
