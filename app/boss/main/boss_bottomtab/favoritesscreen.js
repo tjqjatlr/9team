@@ -22,7 +22,7 @@ const FavoritesScreen = () => {
       id: '2',
       title: '정지선',
       location: '서울 송파구',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDUhokW7-Dmb7_J3adfQutjyKZUe4P99J4PQ&s',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
       isBookmarked: false,
       message: '일할 준비 만빵! 연락주세요',
       tag: 'ENFP',
@@ -42,7 +42,7 @@ const FavoritesScreen = () => {
       onPress={() => router.push('boss/main/parttimerdetail/parttimerdetailscreen')}
       style={styles.jobItem}
     >
-      <Image source={item.image} style={styles.jobImage} />
+       <Image source={{ uri: item.image }} style={styles.jobImage} />
       <View style={styles.jobDetails}>
         <Text style={styles.jobTitle}>{item.title}</Text>
         <Text style={styles.jobLocation}>{item.location}</Text>

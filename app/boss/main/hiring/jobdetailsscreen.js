@@ -19,12 +19,6 @@ export default function JobDetailsScreen() {
   return (
     <View style={styles.container}>
 
-      <View style={styles.header}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/main/hiring/jobselectionscreen')}>
-        <Text style={styles.backText}>←</Text>
-      </TouchableOpacity>
-        <Text style={styles.headerTitle}>근무정보 추가</Text>
-      </View>
 
       {/* 진행 상태 게이지 */}
       <View style={styles.progressContainer}>

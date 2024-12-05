@@ -78,12 +78,6 @@ export default function EndTimeSelectionScreen() {
   return (
     <View style={styles.container}>
 
-    <View style={styles.header}>
-        <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/main/hiring/jobtimeselectionscreen')}> 
-        <Text style={styles.backText}>←</Text>
-      </TouchableOpacity>
-      <Text style={styles.headerTitle}>구인글 등록</Text>
-    </View>
 
     {/* Progress Bar */}
     <View style={styles.progressContainer}>

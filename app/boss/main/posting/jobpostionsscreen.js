@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList, Modal, Alert } from
 import { useRouter } from 'expo-router';
 import { Checkbox, Menu } from 'react-native-paper';
 import styles from './jobpostionsscreen.style';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function JobPostingsScreen() {
   const router = useRouter();
@@ -66,7 +67,7 @@ export default function JobPostingsScreen() {
       return;
     }
 
-    router.push('boss/main/hiring/hiring.editpage/editjobscreen'); // 수정 페이지로 이동
+    router.push('boss/main/hiring/hiring.editpage/editjobscreen');
     closeModal(); // 모달 닫기
   };
 
@@ -112,9 +113,12 @@ export default function JobPostingsScreen() {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header_e}>
-      <TouchableOpacity style ={{ zIndex: 999 }} onPress={() => router.push('boss/main/boss_mainscreen')}>
-        <Text style={styles.backText}>←</Text>
-      </TouchableOpacity>
+      <TouchableOpacity
+          style={{ zIndex: 999 }}
+          onPress={() => router.push('boss/main/boss_mainscreen')} 
+        >
+          <Icon name="home-outline" size={24} color="black" /> 
+        </TouchableOpacity>
       <Text style={styles.headerTitle_e}>나의공고문</Text>
       </View>
       <View style={styles.header}>
@@ -205,6 +209,7 @@ export default function JobPostingsScreen() {
         <Text style={styles.registerButtonText}>구인글 등록</Text>
       </TouchableOpacity>
 
+        
       {/* Modal */}
       <Modal
         transparent={true}
