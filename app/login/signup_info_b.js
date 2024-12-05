@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Modal, FlatList, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import { useRouter } from 'expo-router'; 
 import styles from './signup_info.style';
 
 const jobOptions = [
@@ -13,7 +13,7 @@ const SignupInfo = () => {
   const [isAddressModalVisible, setIsAddressModalVisible] = useState(false);
   const [isJobModalVisible, setIsJobModalVisible] = useState(false);
   const [selectedJobs, setSelectedJobs] = useState([]);
-  const navigation = useNavigation(); // Initialize the navigation object
+  const router = useRouter();
 
   const toggleAddressModal = () => {
     setIsAddressModalVisible(!isAddressModalVisible);
@@ -46,7 +46,7 @@ const SignupInfo = () => {
       [
         {
           text: "확인",
-          onPress: () => navigation.navigate('propensity') // Navigate after confirmation
+          onPress: () => router.push('login/propensity_b')
         }
       ]
     );

@@ -31,6 +31,18 @@ export default function Layout() {
         name="propensity_result"
         options={{ title: '검사 결과' }} 
       />
+       <Stack.Screen
+        name="propensity_b"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="propensity_test_b"
+        options={{ title: '성향 검사' }} 
+      />
+      <Stack.Screen
+        name="propensity_result_b"
+        options={{ title: '검사 결과' }} 
+      />
     </Stack>
   );
 }

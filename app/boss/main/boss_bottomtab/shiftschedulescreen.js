@@ -8,17 +8,28 @@ const ShiftScheduleScreen = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const shifts = [
-    { id: '1', name: '안성재', job: '[조리] 19:00-23:00', date: '2024-11-07', wage: '시급 20,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-    { id: '2', name: '최강록', job: '[서빙] 12:00-18:00', date: '2024-11-08', wage: '시급 18,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-    { id: '3', name: '김하늘', job: '[주방보조] 10:00-14:00', date: '2024-11-09', wage: '시급 15,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+    { id: '1', name: '안성재', job: '[조리] 19:00-23:00', date: '2024-12-13', wage: '시급 20,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+    { id: '2', name: '최강록', job: '[서빙] 12:00-18:00', date: '2024-12-06', wage: '시급 18,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+    { id: '3', name: '김하늘', job: '[주방보조] 10:00-14:00', date: '2024-12-10', wage: '시급 15,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
     // 추가 데이터...
   ];
 
-  const filteredShifts = shifts.filter(shift => shift.date === selectedDate);
+  // 일정이 있는 날짜를 마킹하기 위해 데이터를 준비
+  const markedDates = shifts.reduce((acc, shift) => {
+    acc[shift.date] = { marked: true, dotColor: 'red', ...acc[shift.date] };
+    return acc;
+  }, {});
+
+  // 선택된 날짜 스타일 추가
+  if (selectedDate) {
+    markedDates[selectedDate] = { ...markedDates[selectedDate], selected: true, selectedColor: '#007BFF' };
+  }
 
   const handleDateSelect = (date) => {
     setSelectedDate(date.dateString);
   };
+
+  const filteredShifts = shifts.filter(shift => shift.date === selectedDate);
 
   return (
     <View style={styles.container}>
@@ -42,9 +53,7 @@ const ShiftScheduleScreen = () => {
         <View style={styles.calendarContainer}>
           <Calendar 
             onDayPress={handleDateSelect}
-            markedDates={{
-              [selectedDate]: { selected: true, selectedColor: '#007BFF' }
-            }}
+            markedDates={markedDates}
             monthFormat={'yyyy년 MM월'}
             enableSwipeMonths={true}
             theme={{
@@ -55,7 +64,6 @@ const ShiftScheduleScreen = () => {
               textMonthFontFamily: 'System',
               textDayHeaderFontFamily: 'System',
             }}
-            // 한글 설정
             locale={'ko'}
           />
         </View>
