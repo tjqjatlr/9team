@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingHorizontal: 16,
     marginBottom: 10,
+    marginLeft: 35,
   },
   smallCopyButton: {
     width: 150,
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 8,
     alignItems: 'center',
-    marginRight: 5,
+    marginRight: 10,
   },
   copyButtonText: {
     fontSize: 12,
