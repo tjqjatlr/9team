@@ -1,7 +1,7 @@
 import React ,{ useState }from 'react';
 import { View, Text,  ScrollView, Image, FlatList, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Boss_BottomTab from './boss_bottomtab'; 
+import {Boss_BottomTab} from '../../../components_b'; 
 import styles from './chatroomscreen.style';
 import { useRouter } from 'expo-router';
 
@@ -14,21 +14,21 @@ const ChatRoomScreen = () => {
       title: '안성재',
       lastMessage: '우리 가게 일 해볼래요?',
       timestamp: '오전 11:30',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/Profile2.jpg'),
     },
     {
       id: '2',
       title: '정지선',
       lastMessage: '알바 경력 있어요?',
       timestamp: '5일전',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDUhokW7-Dmb7_J3adfQutjyKZUe4P99J4PQ&s',
+      image: require('../../../../assets/Profile3.jpg'),
     },
     {
       id: '3',
       title: '김철수',
       lastMessage: '무슨요일 희망해요?',
       timestamp: '3일 전',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/profile.png'),
     },
   ]);
 
@@ -43,7 +43,7 @@ const ChatRoomScreen = () => {
         })
       }
     >
-      <Image source={{ uri: item.image }} style={styles.chatImage} />
+      <Image source={item.image} style={styles.chatImage} />
       <View style={styles.chatDetails}>
         <Text style={styles.chatTitle}>{item.title}</Text>
         <Text style={styles.chatLastMessage} numberOfLines={1} ellipsizeMode="tail">

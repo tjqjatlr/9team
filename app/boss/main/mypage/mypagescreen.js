@@ -82,8 +82,8 @@ const MyPageScreen = () => {
         {/* Header */}
         <View style={styles.headerContainer}>
           <View style={styles.profileContainer}>
-            <Image source={require('../../../../assets/cu.jpg')} style={styles.profileImage} />
-            <Text style={styles.userName}>홍길동</Text>
+            <Image source={require('../../../../assets/Profile3.jpg')} style={styles.profileImage} />
+            <Text style={styles.userName}>정지선</Text>
           </View>
           <View style={styles.rightContainer}>
             <TouchableOpacity style={styles.editButton} onPress={handleEditPress}>

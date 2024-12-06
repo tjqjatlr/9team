@@ -3,16 +3,16 @@ import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useRouter } from 'expo-router'; // useRouter 사용
 import styles from './findparttimerscreen.style';
-import Boss_BottomTab from './boss_bottomtab';
+import {Boss_BottomTab} from '../../../components_b';
 import { FontAwesome } from '@expo/vector-icons';
 
 const FindPartTimerScreen = () => {
   const router = useRouter(); // useRouter 가져오기
 
   const applicants = [
-    { id: '1', name: '안성재', age: 42, personality: '???', status: '접속중', message: '저는 부지런하답니다 연락 주세요', type: '찜', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-    { id: '2', name: '최강록', age: 45, personality: 'ISFJ', status: '3분전', message: '일할 준비 만빵! 연락주세요', type: '찜', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-    { id: '3', name: '백종원', age: 58, personality: 'ENTJ', status: '1시간 전', message: '알바 경험 많습니다! 연락 주세요!', type: '찜', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+    { id: '1', name: '안성재', age: 42, personality: '???', status: '접속중', message: '저는 부지런하답니다 연락 주세요', type: '찜',  image: require('../../../../assets/Profile2.jpg') },
+    { id: '2', name: '최강록', age: 45, personality: 'ISFJ', status: '3분전', message: '일할 준비 만빵! 연락주세요', type: '찜',  image: require('../../../../assets/Profile4.jpg')},
+    { id: '3', name: '백종원', age: 58, personality: 'ENTJ', status: '1시간 전', message: '알바 경험 많습니다! 연락 주세요!', type: '찜',  image: require('../../../../assets/Profile1.jpg')},
   ];
 
   const [bookmarked, setBookmarked] = useState({});
@@ -35,7 +35,7 @@ const FindPartTimerScreen = () => {
       style={styles.applicantCard}
     >
       <View style={styles.profileContainer}>
-        <Image source={{ uri: item.image }} style={styles.profileImage} />
+        <Image source={item.image} style={styles.profileImage} />
         <TouchableOpacity
           style={[
             styles.bookmarkButton,

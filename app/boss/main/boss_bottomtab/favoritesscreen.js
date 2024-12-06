@@ -1,7 +1,7 @@
 import React , { useState }from 'react';
 import { View, Text, ScrollView, Image, FlatList,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Boss_BottomTab from './boss_bottomtab'; // 하단바 컴포넌트
+import {Boss_BottomTab} from '../../../components_b'; // 하단바 컴포넌트
 import styles from './favoritesscreen.style';
 import { useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
@@ -13,16 +13,16 @@ const FavoritesScreen = () => {
       id: '1',
       title: '안성재',
       location: '서울 강남구',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/Profile2.jpg'),
       isBookmarked: true,
       message: '저는 부지런하답니다 연락 주세요',
       tag: 'INTJ',
     },
     {
       id: '2',
-      title: '정지선',
+      title: '김하늘',
       location: '서울 송파구',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/profile.png'),
       isBookmarked: false,
       message: '일할 준비 만빵! 연락주세요',
       tag: 'ENFP',
@@ -42,7 +42,7 @@ const FavoritesScreen = () => {
       onPress={() => router.push('boss/main/parttimerdetail/parttimerdetailscreen')}
       style={styles.jobItem}
     >
-       <Image source={{ uri: item.image }} style={styles.jobImage} />
+       <Image source={item.image} style={styles.jobImage} />
       <View style={styles.jobDetails}>
         <Text style={styles.jobTitle}>{item.title}</Text>
         <Text style={styles.jobLocation}>{item.location}</Text>

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { Calendar } from 'react-native-calendars';
-import Boss_BottomTab from './boss_bottomtab'; // 하단바 컴포넌트
+import {Boss_BottomTab}from '../../../components_b'; // 하단바 컴포넌트
 import styles from './shiftschedulescreen.style';
 
 const ShiftScheduleScreen = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const shifts = [
-    { id: '1', name: '안성재', job: '[조리] 19:00-23:00', date: '2024-12-13', wage: '시급 20,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-    { id: '2', name: '최강록', job: '[서빙] 12:00-18:00', date: '2024-12-06', wage: '시급 18,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-    { id: '3', name: '김하늘', job: '[주방보조] 10:00-14:00', date: '2024-12-10', wage: '시급 15,000원', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+    { id: '1', name: '안성재', job: '[조리] 19:00-23:00', date: '2024-12-13', wage: '시급 20,000원', image: require('../../../../assets/Profile2.jpg')},
+    { id: '2', name: '최강록', job: '[서빙] 12:00-18:00', date: '2024-12-06', wage: '시급 18,000원',image: require('../../../../assets/Profile4.jpg') },
+    { id: '3', name: '김하늘', job: '[주방보조] 10:00-14:00', date: '2024-12-10', wage: '시급 15,000원', image: require('../../../../assets/profile.png')},
     // 추가 데이터...
   ];
 
@@ -80,7 +80,7 @@ const ShiftScheduleScreen = () => {
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                   <View style={styles.shiftCard}>
-                    <Image source={{ uri: item.image }} style={styles.shiftImage} />
+                    <Image source={item.image} style={styles.shiftImage} />
                     <View style={styles.shiftInfo}>
                       <Text style={styles.shiftName}>{item.name}</Text>
                       <Text style={styles.shiftJob}>{item.job}</Text>

@@ -47,7 +47,7 @@ const MyPageEditScreen = () => {
                 <Text style={styles.sectionTitle}>기본 정보</Text>
                 <View style={styles.infoRow}>
                     <Text style={styles.infoLabel}>사업장</Text>
-                    <Text style={styles.infoValue}>홍길동</Text>
+                    <Text style={styles.infoValue}>정지선</Text>
                 </View>
                 <View style={styles.infoRow}>
                     <Text style={styles.infoLabel}>Email</Text>

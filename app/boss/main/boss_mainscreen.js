@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image, Dimensions, FlatList, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Boss_BottomTab from './boss_bottomtab/boss_bottomtab'; 
-import ParttimerCard from './parttimercard/ParttimerCard';
+import {Boss_BottomTab,ParttimerCard} from '../../components_b'; 
 import { useRouter } from 'expo-router';
 import styles from './boss_mainscreen.style';
 
 
 const Boss_MainScreen = () => {
   const applicants = [
-  { id: '1', title: '안성재', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '대기중', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '2', title: '최강록', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '승인필요', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '3', title: '백종원', info_time: '시간 12:00~18:00', info_pay: '시급 18,000원', tag: '서빙', status: '종료', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '4', title: '김하늘', info_time: '시간 10:00~14:00', info_pay: '시급 15,000원', tag: '주방보조', status: '대기중', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
-  { id: '5', title: '이유진', info_time: '시간 11:00~15:00', info_pay: '시급 18,500원', tag: '서빙', status: '승인필요', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s' },
+  { id: '1', title: '안성재', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '대기중', image: require('../../../assets/Profile2.jpg') },
+  { id: '2', title: '최강록', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '승인필요', image: require('../../../assets/Profile4.jpg') },
+  { id: '3', title: '백종원', info_time: '시간 12:00~18:00', info_pay: '시급 18,000원', tag: '서빙', status: '종료', image: require('../../../assets/Profile1.jpg') },
+  { id: '4', title: '김하늘', info_time: '시간 10:00~14:00', info_pay: '시급 15,000원', tag: '주방보조', status: '대기중', image: require('../../../assets/profile.png') },
+  { id: '5', title: '이유진', info_time: '시간 11:00~15:00', info_pay: '시급 18,500원', tag: '서빙', status: '승인필요',  image: require('../../../assets/profile.png') },
 ];
   const screenWidth = Dimensions.get('window').width; 
   const [currentPage, setCurrentPage] = useState(0); 
@@ -68,8 +67,8 @@ const Boss_MainScreen = () => {
 
         {/* 사장님 프로필 */}
         <View style={styles.profileSection}>
-          <Image source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDUhokW7-Dmb7_J3adfQutjyKZUe4P99J4PQ&s' }} style={styles.profileImage} />
-          <Text style={styles.profileName}>사장님 이름</Text>
+          <Image source={require('../../../assets/Profile3.jpg')} style={styles.profileImage} />
+          <Text style={styles.profileName}>정지선</Text>
         </View>
 
         {/* 채용 배너 - 슬라이드 가능 */}
@@ -145,7 +144,7 @@ const Boss_MainScreen = () => {
         </View>
       </ScrollView>
 
-      <Boss_BottomTab />
+      <Boss_BottomTab/>
     </View>
   );
 };

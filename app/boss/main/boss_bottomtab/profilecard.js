@@ -10,7 +10,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import styles from './profilecard.style';
 import { useRouter } from 'expo-router';
-import Boss_BottomTab from './boss_bottomtab'; 
+import {Boss_BottomTab} from '../../../components_b'; 
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -23,37 +23,37 @@ const profiles = [
       personality: '성실함',
       mbti: 'INFJ',
       preferredHours: '주말 오전',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDUhokW7-Dmb7_J3adfQutjyKZUe4P99J4PQ&s',
+      image: require('../../../../assets/Profile3.jpg'),
     },
     {
       id: '2',
-      name: '김철수',
+      name: '안성재',
       experience: '1년',
       strength: '빠른 적응력',
       personality: '활발함',
       mbti: 'ENTP',
       preferredHours: '평일 저녁',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/Profile2.jpg'),
     },
     {
       id: '3',
-      name: '이영희',
+      name: '백종원',
       experience: '3년',
       strength: '친절함',
       personality: '배려심 많음',
       mbti: 'ISFJ',
       preferredHours: '주중 오전',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/Profile1.jpg'),
     },
     {
       id: '4',
-      name: '박준형',
+      name: '최강록',
       experience: '6개월',
       strength: '창의성',
       personality: '긍정적',
       mbti: 'INTP',
       preferredHours: '주중 오후',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/Profile4.jpg'),
     },
     {
       id: '5',
@@ -63,7 +63,7 @@ const profiles = [
       personality: '냉철함',
       mbti: 'ESTJ',
       preferredHours: '야간 근무',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/profile.png'),
     },
     {
       id: '6',
@@ -73,7 +73,7 @@ const profiles = [
       personality: '신중함',
       mbti: 'ISTP',
       preferredHours: '주말 오후',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/profile.png'),
     },
     {
       id: '7',
@@ -83,7 +83,7 @@ const profiles = [
       personality: '외향적',
       mbti: 'ENFP',
       preferredHours: '주중 저녁',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/profile.png'),
     },
   ];
 
@@ -92,7 +92,7 @@ const profiles = [
       {/* 프로필 사진과 이름 */}
       <View style={styles.profileSection}>
         <Text style={styles.name}>{profile.name} 알바님</Text>
-        <Image source={{ uri: profile.image }} style={styles.profileImage} />
+        <Image source={profile.image} style={styles.profileImage} />
       </View>
   
 

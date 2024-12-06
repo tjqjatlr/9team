@@ -9,16 +9,16 @@ export default function JobSelectionScreen() {
 
   // 직무 목록 데이터 (이미지 경로 추가)
   const jobs = [
-    { id: '1', title: '주방', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '2', title: '서빙', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '3', title: '매장관리', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '4', title: '사무보조', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '5', title: '단순노무', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '6', title: '방송/행사', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '7', title: '운송/배달', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '8', title: '생산/설계', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '9', title: '건설', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
-    { id: '10', title: '물류', image: 'https://cdn-icons-png.flaticon.com/128/4101/4101014.png' },
+    { id: '1', title: '주방', image: require('../../../../assets/kitchen.png') },
+    { id: '2', title: '서빙', image: require('../../../../assets/Serving.png') },
+    { id: '3', title: '매장관리', image: require('../../../../assets/Store Management.png') },
+    { id: '4', title: '사무보조', image: require('../../../../assets/Office Assistant.png') },
+    { id: '5', title: '단순노무', image: require('../../../../assets/Simple Labor.png') },
+    { id: '6', title: '방송/행사',image: require('../../../../assets/Broadcasting.png') },
+    { id: '7', title: '운송/배달', image: require('../../../../assets/Transportation.png') },
+    { id: '8', title: '생산/설계', image: require('../../../../assets/Production.png') },
+    { id: '9', title: '건설', image: require('../../../../assets/Construction.png') },
+    { id: '10', title: '물류', image: require('../../../../assets/Logistics.png') },
   ];
 
   // 직무 선택 핸들러
@@ -59,7 +59,7 @@ export default function JobSelectionScreen() {
             ]}
             onPress={() => selectJob(item.id)}
           >
-            <Image source={{ uri: item.image }} style={styles.jobImage} />
+            <Image source={item.image} style={styles.jobImage} />
             <Text
               style={[
                 styles.jobText,

@@ -14,8 +14,8 @@ export default function RecruitmentManagementScreen() {
       age: 42,
       personality: '???',
       status: '접속중',
-      message: '저는 부지런하답니다 연락 주세요',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      message: '저는 부지런하답니다',
+      image: require('../../../../assets/Profile2.jpg'),
     },
     {
       id: '2',
@@ -24,7 +24,7 @@ export default function RecruitmentManagementScreen() {
       personality: 'ISFJ',
       status: '3분전',
       message: '일할 준비 만빵! 연락주세요',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/Profile4.jpg'),
     },
     {
       id: '3',
@@ -33,7 +33,7 @@ export default function RecruitmentManagementScreen() {
       personality: 'ENTJ',
       status: '1시간 전',
       message: '알바 경험 많습니다! 연락 주세요!',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiLyySSE5U6i1ikBYS5hp-pjvrarAxKqJQ_A&s',
+      image: require('../../../../assets/Profile1.jpg'),
     },
   ]);
 
@@ -54,7 +54,7 @@ export default function RecruitmentManagementScreen() {
   // 알바생 카드 렌더링
   const renderApplicantCard = ({ item, showButtons = false }) => (
     <View style={styles.applicantCard}>
-      <Image source={{ uri: item.image }} style={styles.profileImage} />
+      <Image source={item.image} style={styles.profileImage} />
       <View style={styles.textContainer}>
         <Text style={styles.name}>
           {item.name} ({item.age}세)
