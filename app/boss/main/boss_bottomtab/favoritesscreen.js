@@ -90,12 +90,12 @@ const FavoritesScreen = () => {
             source={require('../../../../assets/nofavorites.png')}
             style={styles.emptyIcon}
           />
-          <Text style={styles.emptyText}>찜한 일자리가 없어요...</Text>
+          <Text style={styles.emptyText}>눈여겨보는 알바생이 없어요...</Text>
           <TouchableOpacity
             style={styles.button}
             onPress={() => router.push('boss/main/boss_bottomtab/findparttimer')}
           >
-            <Text style={styles.buttonText}>일자리 찾으러 가기</Text>
+            <Text style={styles.buttonText}>알바생 찾으러 가기</Text>
           </TouchableOpacity>
         </View>
       ) : (
