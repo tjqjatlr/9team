@@ -71,7 +71,7 @@ const ReviewScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
-      <Image source={{ uri: headerImage }} style={styles.headerImage} />
+      <Image source={headerImage} style={styles.headerImage} />
 
         <Text style={styles.header}>{header}</Text>
       </View>
