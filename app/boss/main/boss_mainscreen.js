@@ -11,7 +11,7 @@ const Boss_MainScreen = () => {
   { id: '1', title: '안성재', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '대기중', image: require('../../../assets/Profile2.jpg') },
   { id: '2', title: '최강록', info_time: '시간 19:00~23:00', info_pay: '시급 20,000원', tag: '조리', status: '승인필요', image: require('../../../assets/Profile4.jpg') },
   { id: '3', title: '백종원', info_time: '시간 12:00~18:00', info_pay: '시급 18,000원', tag: '서빙', status: '종료', image: require('../../../assets/Profile1.jpg') },
-  { id: '4', title: '김하늘', info_time: '시간 10:00~14:00', info_pay: '시급 15,000원', tag: '주방보조', status: '대기중', image: require('../../../assets/profile.png') },
+  { id: '4', title: '김하늘', info_time: '시간 10:00~14:00', info_pay: '시급 15,000원', tag: '주방', status: '대기중', image: require('../../../assets/profile.png') },
   { id: '5', title: '이유진', info_time: '시간 11:00~15:00', info_pay: '시급 18,500원', tag: '서빙', status: '승인필요',  image: require('../../../assets/profile.png') },
 ];
   const screenWidth = Dimensions.get('window').width; 

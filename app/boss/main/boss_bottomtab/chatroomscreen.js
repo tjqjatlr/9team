@@ -7,31 +7,43 @@ import { useRouter } from 'expo-router';
 
 const ChatRoomScreen = () => {
       const router = useRouter();
-       // 더미 채팅방 데이터
-  const [chatRooms, setChatRooms] = useState([
-    {
-      id: '1',
-      title: '안성재',
-      lastMessage: '우리 가게 일 해볼래요?',
-      timestamp: '오전 11:30',
-      image: require('../../../../assets/Profile2.jpg'),
-    },
-    {
-      id: '2',
-      title: '정지선',
-      lastMessage: '알바 경력 있어요?',
-      timestamp: '5일전',
-      image: require('../../../../assets/Profile3.jpg'),
-    },
-    {
-      id: '3',
-      title: '김철수',
-      lastMessage: '무슨요일 희망해요?',
-      timestamp: '3일 전',
-      image: require('../../../../assets/profile.png'),
-    },
-  ]);
-
+      const [chatRooms, setChatRooms] = useState([
+        {
+          id: '1',
+          title: '안성재',
+          lastMessage: '우리 가게 일 해볼래요?',
+          timestamp: '오전 11:30',
+          image: require('../../../../assets/Profile2.jpg'),
+          messages: [
+            { id: '1', text: '안녕하세요! 알바 관련 문의 드립니다.', timestamp: '2024-12-08T10:00:00', sender: 'me' },
+            { id: '2', text: '우리 가게 일 해볼래요?', timestamp: '2024-12-08T11:30:00', sender: 'other' },
+          ],
+        },
+        {
+          id: '2',
+          title: '정지선',
+          lastMessage: '알바 경력 있어요?',
+          timestamp: '5일 전',
+          image: require('../../../../assets/Profile3.jpg'),
+          messages: [
+            { id: '1', text: '안녕하세요! 알바 구하고 있습니다.', timestamp: '2024-12-03T14:00:00', sender: 'me' },
+            { id: '2', text: '알바 경력 있어요?', timestamp: '2024-12-03T14:30:00', sender: 'other' },
+          ],
+        },
+        {
+          id: '3',
+          title: '김철수',
+          lastMessage: '무슨 요일 희망해요?',
+          timestamp: '3일 전',
+          image: require('../../../../assets/profile.png'),
+          messages: [
+            { id: '1', text: '무슨 요일 희망해요?', timestamp: '2024-12-05T09:30:00', sender: 'other' },
+            { id: '2', text: '안녕하세요! 출근 가능한 요일 말씀드립니다.', timestamp: '2024-12-05T09:15:00', sender: 'me' },
+            
+          ],
+        },
+      ]);
+      
 
   const renderChatItem = ({ item }) => (
     <TouchableOpacity
@@ -39,7 +51,8 @@ const ChatRoomScreen = () => {
       onPress={() =>
         router.push({
           pathname: `boss/main/boss_bottomtab/chatroom/${item.id}`,
-          params: { title: item.title },
+          params: { title: item.title,
+            messages: JSON.stringify(item.messages) },
         })
       }
     >
