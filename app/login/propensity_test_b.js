@@ -55,7 +55,7 @@ const PropensityTest = () => {
   };
 
   const handleResultPress = () => {
-    router.push('/login/propensity_result'); 
+    router.push('/login/propensity_result_b'); 
   };
 
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
