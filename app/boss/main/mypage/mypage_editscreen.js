@@ -18,7 +18,7 @@ const MyPageEditScreen = () => {
         router.push('boss/main/mypage/boss.modification/change_addressscreen'); 
     };
     const handleBaroTIPress = () => {
-        router.push('login/propensity'); 
+        router.push('login/propensity_b'); 
     };
 
     const handleDeleteAccountPress = () => {
