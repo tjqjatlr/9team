@@ -153,14 +153,24 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   radarInfoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 15,
+    flexDirection: 'column',
+    padding: 12,
+    backgroundColor: 'white',
     borderWidth: 1,
-    borderColor: '#ccc',
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    marginBottom: 20,
+    borderColor: '#E0E0E0',
+    borderRadius: 8,
+    marginTop: 15,
+    marginHorizontal: 20,
+  },
+  radarGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap', // 줄 바꿈 허용
+    justifyContent: 'space-between',
+  },
+  radarGridItem: {
+    width: '30%', // 3개씩 배치
+    alignItems: 'center',
+    marginBottom: 12,
   },
   radarInfoSection: {
     alignItems: 'center',

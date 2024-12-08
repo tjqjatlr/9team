@@ -15,7 +15,7 @@ const MyPage = () => {
 
   const keywordOptions = [
     '주방', '서빙', '매장관리', '사무보조', '단순노무', '방송/행사스텝',
-    '운송/배달', '생산/제조', '건설', '물류', '미디어',
+    '운송/배달', '생산/제조', '건설', '물류',
   ];
 
   const radarData = [
@@ -176,12 +176,14 @@ const MyPage = () => {
 
         {/* Radar Chart Info Container */}
         <View style={styles.radarInfoContainer}>
-          {radarData.map((item, index) => (
-            <View key={index} style={styles.radarInfoSection}>
-              <Text style={styles.radarLabel}>{item.label}</Text>
-              <Text style={styles.radarValue}>{item.value}P</Text>
-            </View>
-          ))}
+          <View style={styles.radarGrid}>
+            {radarData.map((item, index) => (
+              <View key={index} style={styles.radarGridItem}>
+                <Text style={styles.radarLabel}>{item.label}</Text>
+                <Text style={styles.radarValue}>{item.value}P</Text>
+              </View>
+            ))}
+          </View>
         </View>
 
         {/* Additional Content */}

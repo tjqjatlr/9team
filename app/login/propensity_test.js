@@ -37,7 +37,14 @@ const questions = [
 
 const PropensityTest = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
   const router = useRouter();
+
+  const handleOptionSelect = (option) => {
+    const updatedAnswers = [...answers];
+    updatedAnswers[currentQuestionIndex] = option;
+    setAnswers(updatedAnswers);
+  };
 
   const handleNext = () => {
     if (currentQuestionIndex < questions.length - 1) {
@@ -45,8 +52,8 @@ const PropensityTest = () => {
     }
   };
 
-  const handleResultNavigation = () => {
-    router.push('/login/propensity_result');
+  const handleResultPress = () => {
+    router.push('/login/propensity_result'); 
   };
 
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
@@ -58,17 +65,39 @@ const PropensityTest = () => {
       <Text style={styles.questionText}>{questions[currentQuestionIndex].question}</Text>
       
       {questions[currentQuestionIndex].options.map((option, index) => (
-        <TouchableOpacity key={index} style={styles.optionButton}>
-          <Text style={styles.optionText}>{option}</Text>
+        <TouchableOpacity
+          key={index}
+          style={[
+            styles.optionButton,
+            answers[currentQuestionIndex] === option && styles.selectedOption
+          ]}
+          onPress={() => handleOptionSelect(option)}
+        >
+          <Text
+            style={[
+              styles.optionText,
+              answers[currentQuestionIndex] === option && styles.selectedOptionText
+            ]}
+          >
+            {option}
+          </Text>
         </TouchableOpacity>
       ))}
 
       {currentQuestionIndex < questions.length - 1 ? (
-        <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+        <TouchableOpacity
+          style={styles.nextButton}
+          onPress={handleNext}
+          disabled={!answers[currentQuestionIndex]}
+        >
           <Text style={styles.nextButtonText}>다음</Text>
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={styles.nextButton} onPress={handleResultNavigation}>
+        <TouchableOpacity
+          style={styles.nextButton}
+          onPress={handleResultPress}
+          disabled={!answers[currentQuestionIndex]}
+        >
           <Text style={styles.nextButtonText}>결과 보기</Text>
         </TouchableOpacity>
       )}

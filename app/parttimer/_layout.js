@@ -32,7 +32,7 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
-        name="chatting/chatroom/[id]"
+        name="chatting/chatroomdetail/[id]"
         options={({ route }) => ({
           headerTitle: route.params?.title || '채팅방',
           headerTitleAlign: 'center',
