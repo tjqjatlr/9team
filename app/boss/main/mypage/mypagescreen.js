@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, TextInput, Modal, FlatList } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, TextInput, Modal, FlatList, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { FontAwesome, MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { RadarChart } from '@salmonco/react-native-radar-chart';
@@ -26,6 +26,48 @@ const MyPageScreen = () => {
     { label: '상호존중', value: 59 },
     { label: '학습 및 성장', value: 59 },
   ];
+
+  const mannersScore = 59; // 매너점수
+  const hireCount = 135; // 고용횟수
+  const postingCount = 10; // 공고작성개수
+  const salaryDelay = 0; // 급여지연횟수
+
+  // 점수 계산 함수
+  const calculateCurrentScore = () => {
+    const mannersPoints = Math.floor(mannersScore / 10) * 3;
+    const hirePoints = hireCount * 3;
+    const postingPoints = postingCount * 3;
+    const delayPoints = salaryDelay * -3;
+    return mannersPoints + hirePoints + postingPoints + delayPoints;
+  };
+
+  // 등급 계산 함수
+  const getGrade = (score) => {
+    if (score < 50) return 'bronze';
+    if (score <= 75) return 'silver';
+    return 'gold';
+  };
+
+  // 현재 점수 및 등급 계산
+  const currentScore = calculateCurrentScore();
+  const grade = getGrade(currentScore);
+
+  // 등급 이미지 맵핑
+  const gradeImages = {
+    bronze: require('../../../../assets/bronze.png'),
+    silver: require('../../../../assets/silver.png'),
+    gold: require('../../../../assets/gold.png'),
+  };
+
+  // info 아이콘 클릭 핸들러
+  const handleInfoPress = () => {
+    Alert.alert(
+      '점수 정보',
+      `현재 점수: ${currentScore}점\n등급: ${grade}\n\n점수 계산 방법:\n- 매너점수 10점당 3점\n- 고용횟수 1회당 3점\n- 공고작성 1회당 3점\n- 급여지연 1회당 -3점`,
+      [{ text: '확인', onPress: () => {} }],
+      { cancelable: true }
+    );
+  };
 
   const router = useRouter()
 
@@ -110,26 +152,33 @@ const MyPageScreen = () => {
         {/* Row with Info and Preference Containers */}
         <View style={styles.rowContainer}>
       <View style={styles.infoContainer}>
-        <Ionicons name="information-circle" size={20} color="#007AFF" style={styles.infoIcon} />
+      <TouchableOpacity onPress={handleInfoPress}>
+              <Ionicons 
+                name="information-circle" 
+                size={20} 
+                color="#007AFF" 
+                style={styles.infoIcon} 
+              />
+            </TouchableOpacity>
         <View style={styles.imageContainer}>
-          <Image source={require('../../../../assets/medal.png')} style={styles.medalImage} />
+        <Image source={gradeImages[grade]} style={styles.medalImage} />
         </View>
         <View style={styles.textContainer}>
           <View style={styles.labelValueRow}>
             <Text style={styles.label}>매너점수</Text>
-            <Text style={styles.value}>59P</Text>
+            <Text style={styles.value}>{mannersScore}P</Text>
           </View>
           <View style={styles.labelValueRow}>
             <Text style={styles.label}>채용횟수</Text>
-            <Text style={styles.value}>3회</Text>
+            <Text style={styles.value}>{hireCount}회</Text>
           </View>
           <View style={styles.labelValueRow}>
             <Text style={styles.label}>공고작성</Text>
-            <Text style={styles.value}>3개</Text>
+            <Text style={styles.value}>{postingCount}개</Text>
           </View>
           <View style={styles.labelValueRow}>
-            <Text style={styles.label}>제안횟수</Text>
-            <Text style={styles.value}>0회</Text>
+            <Text style={styles.label}>급여지연</Text>
+            <Text style={styles.value}>{salaryDelay}회</Text>
           </View>
         </View>
       </View>
