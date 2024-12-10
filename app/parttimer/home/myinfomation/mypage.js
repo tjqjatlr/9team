@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, TextInput, Modal, FlatList } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, TextInput, Modal, FlatList, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { FontAwesome, MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { RadarChart } from '@salmonco/react-native-radar-chart';
@@ -26,6 +26,48 @@ const MyPage = () => {
     { label: '팀워크', value: 59 },
     { label: '효율성', value: 59 },
   ];
+
+  const mannersScore = 59; // 매너점수
+  const totalSalary = 135; // 급여총액 (만원 단위)
+  const workCount = 10; // 근무횟수
+  const absenceCount = 0; // 결근횟수
+
+  // 점수 계산 함수
+  const calculateCurrentScore = () => {
+    const mannersPoints = Math.floor(mannersScore / 10) * 3;
+    const salaryPoints = Math.floor(totalSalary / 10) * 1;
+    const workPoints = workCount * 3;
+    const absencePoints = absenceCount * -3;
+    return mannersPoints + salaryPoints + workPoints + absencePoints;
+  };
+
+  // 등급 계산 함수
+  const getGrade = (score) => {
+    if (score < 50) return 'bronze';
+    if (score <= 75) return 'silver';
+    return 'gold';
+  };
+
+  // 현재 점수 및 등급 계산
+  const currentScore = calculateCurrentScore();
+  const grade = getGrade(currentScore);
+
+  // 등급 이미지 맵핑
+  const gradeImages = {
+    bronze: require('../../../../assets/bronze.png'),
+    silver: require('../../../../assets/silver.png'),
+    gold: require('../../../../assets/gold.png'),
+  };
+
+  // info 아이콘 클릭 핸들러
+  const handleInfoPress = () => {
+    Alert.alert(
+      '점수 정보',
+      `현재 점수: ${currentScore}점\n등급: ${grade}\n\n점수 계산 방법:\n- 매너점수 10점당 3점\n- 급여총액 10만원당 1점\n- 근무횟수 1회당 3점\n- 결근횟수 1회당 -3점`,
+      [{ text: '확인', onPress: () => {} }],
+      { cancelable: true }
+    );
+  };
 
   const router = useRouter()
 
@@ -110,26 +152,33 @@ const MyPage = () => {
         {/* Row with Info and Preference Containers */}
         <View style={styles.rowContainer}>
           <View style={styles.infoContainer}>
-            <Ionicons name="information-circle" size={20} color="#007AFF" style={styles.infoIcon} />
+          <TouchableOpacity onPress={handleInfoPress}>
+              <Ionicons 
+                name="information-circle" 
+                size={20} 
+                color="#007AFF" 
+                style={styles.infoIcon} 
+              />
+            </TouchableOpacity>
             <View style={styles.imageContainer}>
-              <Image source={require('../../../../assets/medal.png')} style={styles.medalImage} />
+              <Image source={gradeImages[grade]} style={styles.medalImage} />
             </View>
             <View style={styles.textContainer}>
               <View style={styles.labelValueRow}>
                 <Text style={styles.label}>매너점수</Text>
-                <Text style={styles.value}>59P</Text>
+                <Text style={styles.value}>{mannersScore}P</Text>
               </View>
               <View style={styles.labelValueRow}>
                 <Text style={styles.label}>급여총액</Text>
-                <Text style={styles.value}>135만원</Text>
+                <Text style={styles.value}>{totalSalary}만원</Text>
               </View>
               <View style={styles.labelValueRow}>
                 <Text style={styles.label}>근무횟수</Text>
-                <Text style={styles.value}>3회</Text>
+                <Text style={styles.value}>{workCount}회</Text>
               </View>
               <View style={styles.labelValueRow}>
                 <Text style={styles.label}>결근횟수</Text>
-                <Text style={styles.value}>0회</Text>
+                <Text style={styles.value}>{absenceCount}회</Text>
               </View>
             </View>
           </View>

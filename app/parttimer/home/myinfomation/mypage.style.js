@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
   },
   infoIcon: {
     position: 'absolute',
-    top: 5,
-    left: 5,
+    top: -5,
+    left: -5,
   },
   textContainer: {
     justifyContent: 'center',
