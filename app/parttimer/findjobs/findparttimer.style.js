@@ -162,6 +162,16 @@ const styles = StyleSheet.create({
         marginBottom: 4,
         color: '#FFFFFF',
     },
+    noJobContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 20,
+    },
+    noJobText: {
+        fontSize: 16,
+        color: '#888',
+    },
 });
 
 export default styles

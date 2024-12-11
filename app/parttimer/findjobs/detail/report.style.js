@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
   },
   checkboxContainer: {
     marginBottom: -10,
-    marginLeft: -20
+    marginLeft: -20, 
   },
   otherContainer: {
-    marginLeft: -20,
+    marginLeft: -20, 
   },
   textInput: {
     borderWidth: 1,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
-    width: '100%',
+    width: '100%', 
   },
   buttonText: {
     color: '#ffffff',

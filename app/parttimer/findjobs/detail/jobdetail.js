@@ -61,7 +61,7 @@ const JobDetail = () => {
 
                 {/* 상세 정보 */}
                 <View style={styles.details}>
-                    <Text style={styles.detailItem}>📅 근무 날짜: 미정</Text>
+                    <Text style={styles.detailItem}>📅 {jobData.startDate}</Text>
                     <Text style={styles.detailItem}>🕒 {jobData.time}</Text>
                     <Text style={styles.detailItem}>💸 {jobData.wage}</Text>
                     <Text style={styles.detailItem}>📍 {jobData.address}</Text>

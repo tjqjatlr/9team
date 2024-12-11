@@ -4,11 +4,9 @@ import { CheckBox } from '@rneui/themed';
 import { router } from 'expo-router';
 import styles from './report.style';
 
-
 const ReportScreen = () => {
   const [selectedReasons, setSelectedReasons] = useState([]);
   const [otherReason, setOtherReason] = useState('');
-  const [alertMessage, setAlertMessage] = useState('');
 
   const reasons = [
     '사행성 / 다단계로 의심돼요',
@@ -21,35 +19,29 @@ const ReportScreen = () => {
     '등록된 근무날짜와 다르게 요구해요',
   ];
 
+  // 신고 사유 선택/해제 함수
   const toggleReason = (reason) => {
-    if (selectedReasons.includes(reason)) {
-      setSelectedReasons(selectedReasons.filter((item) => item !== reason));
-    } else {
-      setSelectedReasons([...selectedReasons, reason]);
-    }
+    setSelectedReasons((prevReasons) =>
+      prevReasons.includes(reason)
+        ? prevReasons.filter((item) => item !== reason)
+        : [...prevReasons, reason]
+    );
   };
 
+  // 신고 제출 처리 함수
   const handleSubmit = () => {
     if (selectedReasons.length === 0) {
       Alert.alert('신고 사유를 선택해 주세요.');
       return;
     }
-
     if (selectedReasons.includes('기타') && otherReason.trim() === '') {
       Alert.alert('신고 사유를 입력해 주세요.');
       return;
     }
-
-    setAlertMessage('');
     Alert.alert(
       '신고 완료',
       '신고해주셔서 감사합니다. 검토 후 즉시 조치할 수 있도록 하겠습니다.',
-      [
-        {
-          text: '확인',
-          onPress: () => router.push('parttimer/findjobs/findparttimer'),
-        },
-      ]
+      [{ text: '확인', onPress: () => router.push('parttimer/findjobs/findparttimer') }]
     );
   };
 
@@ -86,7 +78,6 @@ const ReportScreen = () => {
             />
           )}
         </View>
-        {alertMessage ? <Text style={styles.alertText}>{alertMessage}</Text> : null}
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
